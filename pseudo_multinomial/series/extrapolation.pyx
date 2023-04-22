@@ -20,7 +20,7 @@ cdef extern from "<random>" namespace "std":
         mt19937() nogil
         mt19937(unsigned int seed) nogil
 
-cdef extern from "../utils/random_utils.hpp":
+cdef extern from "../utils/random_utils.h":
     cdef void seed_mt19937(mt19937 gen) nogil
     cdef void seed_mt19937(mt19937 gen, int seed) nogil
     cdef unsigned long get_10_rand_bits() nogil

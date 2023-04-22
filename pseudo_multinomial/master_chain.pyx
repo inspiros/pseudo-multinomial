@@ -28,7 +28,7 @@ cdef extern from "<random>" namespace "std":
         double operator()(pcg64 gen) nogil
         double operator()(mt19937 gen) nogil
 
-cdef extern from "./utils/random_utils.hpp":
+cdef extern from "./utils/random_utils.h":
     cdef void seed_mt19937(mt19937 gen) nogil
     cdef void seed_mt19937(mt19937 gen, int seed) nogil
 

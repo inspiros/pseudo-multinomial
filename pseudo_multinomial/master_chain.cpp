@@ -9,7 +9,10 @@
             "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include\\numpy\\ndarrayobject.h",
             "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include\\numpy\\ndarraytypes.h",
             "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include\\numpy\\ufuncobject.h",
-            "pseudo_multinomial\\utils\\random_utils.hpp"
+            "pseudo_multinomial\\utils\\random_utils.h"
+        ],
+        "extra_compile_args": [
+            "-std=c++11"
         ],
         "include_dirs": [
             "pseudo_multinomial",
@@ -794,7 +797,7 @@ static CYTHON_INLINE float __PYX_NAN() {
     
 #include <math.h>
 #include <random>
-#include "./utils/random_utils.hpp"
+#include "./utils/random_utils.h"
 #include "pythread.h"
 #include <stdlib.h>
 #include "pystate.h"

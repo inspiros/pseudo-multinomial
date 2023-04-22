@@ -1,4 +1,4 @@
-#include "random_utils.hpp"
+#include "random_utils.h"
 
 void seed_mt19937(std::mt19937 &rng, uint32_t seed) {
     rng.seed(static_cast<std::mt19937::result_type>(seed));
