@@ -1,9 +1,9 @@
 #pragma once
 
 #include <bitset>
-#include <cstdint> //`uint32_t`
-#include <functional> //`std::hash`
-#include <random> //`std::mt19937`
+#include <cstdint>
+#include <functional>
+#include <random>
 #include <time.h>
 
 static std::random_device RD;
