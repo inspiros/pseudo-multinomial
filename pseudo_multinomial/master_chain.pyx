@@ -256,17 +256,17 @@ cdef class MasterChain:
 
     @staticmethod
     def from_pvals(chains: Sequence[Chain],
-                   pvals: Optional[Union[VectorLike, float]] = None,
+                   pvals: Optional[VectorLike] = None,
                    repeat: Union[bool, Sequence[bool], np.ndarray] = True,
                    random_state: Optional[np.random.RandomState] = None) -> 'MasterChain':
         cdef unsigned long n_chains = len(chains)
         if pvals is None:
             pvals = np.ones(n_chains, dtype=np.float64) / n_chains
-        elif isinstance(pvals, float):
-            pvals = np.full(n_chains, pvals, dtype=np.float64)
-        else:
+        elif isinstance(pvals, (np.ndarray, Sequence)):
             pvals = np.asarray(pvals, dtype=np.float64)
-        if pvals.shape[0] != n_chains:
+        else:
+            raise ValueError(f'pvals must be an array of floats. Got {pvals}.')
+        if pvals.ndim != 1 or pvals.shape[0] != n_chains:
             raise ValueError('chains and pvals must have the same number '
                              f'of elements. Got {n_chains}, {pvals.shape[0]}.')
         if pvals[:-1].sum() > 1:

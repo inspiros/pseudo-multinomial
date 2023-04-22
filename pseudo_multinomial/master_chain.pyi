@@ -74,7 +74,7 @@ class MasterChain:
 
     @staticmethod
     def from_pvals(chains: Sequence[Chain],
-                   pvals: Optional[Union[VectorLike, float]] = None,
+                   pvals: Optional[VectorLike] = None,
                    repeat: Union[bool, Sequence[bool], np.ndarray] = True,
                    random_state: Optional[np.random.RandomState] = None) -> 'MasterChain':
         pass
