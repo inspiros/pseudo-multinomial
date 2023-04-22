@@ -23,7 +23,7 @@ cdef extern from "<random>" namespace "std":
 cdef extern from "../utils/random_utils.h":
     cdef void seed_mt19937(mt19937 gen) nogil
     cdef void seed_mt19937(mt19937 gen, int seed) nogil
-    cdef unsigned long get_10_rand_bits() nogil
+    unsigned long get_10_rand_bits() nogil
 
 __all__ = [
     'shanks',

@@ -22905,7 +22905,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "pseudo_multinomial/series/extrapolation.pyx":28
- *     cdef unsigned long get_10_rand_bits() nogil
+ *     unsigned long get_10_rand_bits() nogil
  * 
  * __all__ = [             # <<<<<<<<<<<<<<
  *     'shanks',
