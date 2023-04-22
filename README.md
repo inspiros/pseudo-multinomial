@@ -1,19 +1,22 @@
 Pseudo-Random Multinomial Distribution
 ======
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/inspiros/pseudo-multinomial/build_wheels.yml)
+![GitHub](https://img.shields.io/github/license/inspiros/pseudo-multinomial)
 
 A package for drawing samples from pseudo-random multinomial distribution.
 
 ## Background
 
-This is originally meant to be used in our unpublished work, where we only concern about pseudo-random binomial
-distribution.
+This is meant to be used in our unpublished work, where we only concern about pseudo-random binomial distribution.
 In essence, we want to generate 0/1 bits such that 0 or 1 events are promoted to occur consecutively, forming clusters,
 while we can choose expected number of consecutive occurrences and overall nominal probability at will.
 
-The code in this repo is further extended to pseudo-random multinomial distribution and can support even more behaviors.
+The code in this repo further extends the original idea to pseudo-random multinomial distribution and can support even
+more behaviors.
 Therefore, we will add some background here.
 
 ### Main Idea
+_Redacted_
 
 ### Notations
 
@@ -74,17 +77,20 @@ $$ P_i = E_1\pi^1_1 $$
 
 ## Installation
 
-`pseudo-multinomial` has pre-built binaries hosted at TestPyPI:
+[pseudo-multinomial](https://test.pypi.org/project/pseudo-multinomial/) has pre-built binaries hosted at **TestPyPI**
+(for now):
 ```bash
-pip install --index-url https://test.pypi.org/simple/ pseudo-multinomial
+pip install -i https://test.pypi.org/simple/ pseudo-multinomial
 ```
 
-Pull this repo and install from source:
+Otherwise, pull this repo and install from source (requires a C++ compiler):
 ```bash
 pip install .
 ```
 
 ## Usage
+
+### Examples
 
 #### Example 1:
 In this example, we replicate the perfect coin flip using a pair of `ForwardingChain`:
