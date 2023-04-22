@@ -244,7 +244,7 @@ For defining a custom chain, you can either extend the base classes (`Chain`, `F
 use the `LambdaChain`.
 
 This example defines:
-- A finite `QuadraticChain`:  $e_k = c.k^2$ with number of states $n=\lfloor\sqrt{\frac{1}{c}}\rfloor$.
+- A finite `QuadraticChain`:  $e_k = c.k^2$ with number of states $n=\left\lfloor\sqrt{\frac{1}{c}}\right\rfloor$.
 - An infinite `AlgebraicChain`: $e_k = \frac{\sqrt{c}.k}{\sqrt{1 + c.k^2}}$, which has nice properties
   $e_0=0$ and $\lim_{k\rightarrow\infty}{e_k}=1$.
 
