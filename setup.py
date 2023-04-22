@@ -45,7 +45,8 @@ def get_ext_modules():
             ext_modules.append(
                 Extension(name=os.path.splitext(f_path)[0].replace(os.sep, '.'),
                           sources=[f_path],
-                          include_dirs=include_dirs)
+                          include_dirs=include_dirs,
+                          extra_compile_args=['-std=c++11'])
             )
     if use_cython:
         # Set up the ext_modules for Cython or not, depending

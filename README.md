@@ -43,7 +43,7 @@ Meanwhile, for infinite chains, the sum of cumulative product of linger probabil
 if $\lim_{k\rightarrow\infty}{\alpha_k}=0$ (or $\lim_{k\rightarrow\infty}{e_k}=1$).
 It's limit can be estimated using [Wynn's Epsilon method](https://mathworld.wolfram.com/WynnsEpsilonMethod.html).
 
-Then, the (real) expectation of each chain $\mathbf{E}_i$ in a system multiple chains is computed as:
+Then, the (real) expectation of each chain $\mathbf{E}_i$ in a system of multiple chains is computed as:
 ```math
 \mathbf{E}_i=\frac{E_i}{1-S_{ii}}
 ```
@@ -224,6 +224,64 @@ desired_p=0.95, solved_p=0.95000, c=0.9473684210526316
 ```
 
 See more: https://dota2.fandom.com/wiki/Random_Distribution
+
+#### Example 4: Custom Chain
+
+For defining a custom chain, you can either extend the base classes (`Chain`, `FiniteChain`, `InfiniteChain`) or
+use the `LambdaChain`.
+This example defines a custom `AlgebraicChain` with exit probability computed as:
+```math
+e_k = \frac{\sqrt{c}.k}{\sqrt{1 + c.k^2}}
+```
+which has nice properties $e_0=0$ and $\lim_{k\rightarrow\infty}{e_k}=1$.
+
+```python
+import math
+
+from pseudo_multinomial import *
+from pseudo_multinomial.chains import InfiniteChain
+from pseudo_multinomial.utils import check_chain
+
+class AlgebraicChain(InfiniteChain):
+    def __init__(self, c=1.):
+        super().__init__()
+        self.c = c
+        self._c_sqrt = math.sqrt(self.c)
+
+    def exit_probability(self, k: int):
+        return self._c_sqrt * k / math.sqrt(1 + self.c * k ** 2)
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}(c={self.c})'
+
+chains = [
+    LinearChain(c=0.4),
+    HarmonicChain(c=.3),
+    AlgebraicChain(c=7)
+]
+g = MasterChain.from_pvals(chains, repeat=False)
+check_chain(g, n_rolls=1000000)
+```
+Output:
+```
+[Testing] n_rolls=1000000
+MasterChain(
+	0: LinearChain(c=0.4),
+	1: HarmonicChain(c=0.3),
+	2: AlgebraicChain(c=7),
+)
+--------------------------------------------------
+Chain transition matrix:
+[[0.  0.5 0.5]
+ [0.5 0.  0.5]
+ [0.5 0.5 0. ]]
+--------------------------------------------------
+analytical probs: [0.31423414 0.49106532 0.19470054]
+simulated probs : [0.313601 0.491148 0.195251]
+
+analytical expectations: [1.72       2.6879076  1.06571782]
+simulated expectations : [1.71657453 2.68924735 1.06696868]
+```
 
 ## License
 
