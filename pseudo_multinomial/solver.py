@@ -26,10 +26,7 @@ class RootFindingSolver:
     def _f(self, param):
         if self.update_param_fn is not None:
             self.update_param_fn(param)
-            print('param:', param)
-            res = self.objective_fn() - self.objective_val
-            print('loss:', res)
-            return res
+            return self.objective_fn() - self.objective_val
         return self.objective_fn(param) - self.objective_val
 
     def solve(self, method: str, *args, **kwargs):
