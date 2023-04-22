@@ -66,7 +66,7 @@ E_1\pi^1_1 &+ E_2\pi^2_1 &+ \cdots &+ E_N\pi^N_1 &= 1 \quad\quad (\sum\limits_{i
 Note that the last equation contains the relationship between the expectation, entrance stationary, and probability 
 of event $i$:
 
-$$ P_i = E_1\pi^1_1 $$
+$$ P_i = E_1\pi^i_1 $$
 
 ## Requirements
 
