@@ -41,12 +41,10 @@ def get_ext_modules():
     for root, dirs, files in os.walk(PACKAGE_ROOT):
         for f in filter(lambda f: f.endswith(ext), files):
             f_path = os.path.join(root, f)
-            print(f)
             ext_modules.append(
                 Extension(name=os.path.splitext(f_path)[0].replace(os.sep, '.'),
                           sources=[f_path],
                           include_dirs=include_dirs,
-                          language='c++',
                           extra_compile_args=['-std=c++11'])
             )
     if use_cython:

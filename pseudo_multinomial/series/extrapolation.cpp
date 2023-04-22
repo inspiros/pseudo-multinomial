@@ -8,22 +8,20 @@
             "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include\\numpy\\arrayscalars.h",
             "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include\\numpy\\ndarrayobject.h",
             "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include\\numpy\\ndarraytypes.h",
-            "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include\\numpy\\ufuncobject.h",
-            "pseudo_multinomial\\utils\\random_utils.h"
+            "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include\\numpy\\ufuncobject.h"
         ],
         "extra_compile_args": [
             "-std=c++11"
         ],
         "include_dirs": [
-            "pseudo_multinomial\\series",
             "pseudo_multinomial",
-            "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include"
+            "C:\\Python\\Python38\\lib\\site-packages\\numpy\\core\\include",
+            "pseudo_multinomial\\series"
         ],
         "language": "c++",
         "name": "pseudo_multinomial.series.extrapolation",
         "sources": [
-            "pseudo_multinomial\\series\\extrapolation.pyx",
-            "pseudo_multinomial/utils/random_utils.cpp"
+            "pseudo_multinomial\\series\\extrapolation.pyx"
         ]
     },
     "module_name": "pseudo_multinomial.series.extrapolation"
@@ -798,7 +796,35 @@ static CYTHON_INLINE float __PYX_NAN() {
 #include "pythread.h"
 #include <math.h>
 #include <random>
-#include "../utils/random_utils.h"
+
+    #pragma once
+    #include <bitset>
+    #include <cstdint>
+    #include <functional>
+    #include <random>
+    #include <time.h>
+
+    void seed_mt19937(std::mt19937 &rng, uint32_t seed) {
+        rng.seed(static_cast<std::mt19937::result_type>(seed));
+    }
+
+    void seed_mt19937(std::mt19937 &rng) {
+        uint32_t t = static_cast<uint32_t>(time(nullptr));
+        std::hash<uint32_t> hasher; size_t hashed=hasher(t);
+        rng.seed(static_cast<std::mt19937::result_type>(static_cast<uint32_t>(hashed)));
+    }
+
+    static std::random_device RD;
+    static std::mt19937 RNG(RD());
+    static std::bernoulli_distribution RAND_BITS_DIST = std::bernoulli_distribution(0.5);
+    unsigned long get_10_rand_bits() {
+        std::bitset<10> rand_bits;
+        for (size_t i = 0; i < 10; i++) {
+            rand_bits.set(i, RAND_BITS_DIST(RNG));
+        }
+        return rand_bits.to_ulong();
+    }
+    
 #include <stdlib.h>
 #include "pystate.h"
 #ifdef _OPENMP
@@ -2812,6 +2838,8 @@ static PyTypeObject *__pyx_ptype_18pseudo_multinomial_6series_4fptr_TrackedFPtr 
 static PyTypeObject *__pyx_ptype_18pseudo_multinomial_6series_4fptr_DoubleSeriesFPtr = 0;
 static PyTypeObject *__pyx_ptype_18pseudo_multinomial_6series_4fptr_CyDoubleSeriesFPtr = 0;
 static PyTypeObject *__pyx_ptype_18pseudo_multinomial_6series_4fptr_PyDoubleSeriesFPtr = 0;
+
+/* Module declarations from 'pseudo_multinomial.utils.random_utils' */
 
 /* Module declarations from 'pseudo_multinomial.series.extrapolation' */
 static PyTypeObject *__pyx_array_type = 0;
@@ -22864,14 +22892,14 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":8
+  /* "pseudo_multinomial/series/extrapolation.pyx":7
  * # cython: profile = False
  * 
  * from typing import Callable, Optional             # <<<<<<<<<<<<<<
  * 
  * import cython
  */
-  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_Callable);
   __Pyx_GIVEREF(__pyx_n_s_Callable);
@@ -22879,33 +22907,33 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_Optional);
   __Pyx_GIVEREF(__pyx_n_s_Optional);
   PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_Optional);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_typing, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_typing, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Callable); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Callable); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Callable, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Callable, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Optional); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Optional); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Optional, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Optional, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":12
+  /* "pseudo_multinomial/series/extrapolation.pyx":11
  * import cython
  * cimport numpy as cnp
  * import numpy as np             # <<<<<<<<<<<<<<
  * from cpython cimport array
  * from libc cimport math
  */
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_2) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "pseudo_multinomial/series/extrapolation.pyx":28
- *     unsigned long get_10_rand_bits() nogil
+ * #     cdef unsigned long get_10_rand_bits() nogil
  * 
  * __all__ = [             # <<<<<<<<<<<<<<
  *     'shanks',
@@ -23105,8 +23133,8 @@ if (!__Pyx_RefNanny) {
 
   /* "pseudo_multinomial/series/extrapolation.pyx":1
  * # distutils: language = c++             # <<<<<<<<<<<<<<
- * # distutils: sources = pseudo_multinomial/utils/random_utils.cpp
  * # cython: cdivision = True
+ * # cython: initializedcheck = False
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);

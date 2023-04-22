@@ -1,5 +1,4 @@
 # distutils: language = c++
-# distutils: sources = pseudo_multinomial/utils/random_utils.cpp
 # cython: cdivision = True
 # cython: initializedcheck = False
 # cython: boundscheck = False
@@ -12,25 +11,26 @@ from libc cimport math
 from .chains import Chain
 from .chains cimport Chain
 from .typing import Sequence, Optional, Union, VectorLike, MatrixLike
+from .utils.random_utils cimport mt19937, seed_mt19937, uniform_real_distribution
 
-cdef extern from "<random>" namespace "std":
-    cdef cppclass pcg64:
-        pcg64() nogil
-        pcg64(unsigned int seed) nogil
+# cdef extern from "<random>" namespace "std":
+#     cdef cppclass pcg64:
+#         pcg64() nogil
+#         pcg64(unsigned int seed) nogil
+#
+#     cdef cppclass mt19937:
+#         mt19937() nogil
+#         mt19937(unsigned int seed) nogil
+#
+#     cdef cppclass uniform_real_distribution[double]:
+#         uniform_real_distribution() nogil
+#         uniform_real_distribution(double a, double b) nogil
+#         double operator()(pcg64 gen) nogil
+#         double operator()(mt19937 gen) nogil
 
-    cdef cppclass mt19937:
-        mt19937() nogil
-        mt19937(unsigned int seed) nogil
-
-    cdef cppclass uniform_real_distribution[double]:
-        uniform_real_distribution() nogil
-        uniform_real_distribution(double a, double b) nogil
-        double operator()(pcg64 gen) nogil
-        double operator()(mt19937 gen) nogil
-
-cdef extern from "./utils/random_utils.h":
-    cdef void seed_mt19937(mt19937 gen) nogil
-    cdef void seed_mt19937(mt19937 gen, int seed) nogil
+# cdef extern from "./utils/random_utils.h":
+#     cdef void seed_mt19937(mt19937 gen) nogil
+#     cdef void seed_mt19937(mt19937 gen, int seed) nogil
 
 __all__ = [
     'MasterChain',
