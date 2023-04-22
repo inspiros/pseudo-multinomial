@@ -199,7 +199,7 @@ def update_param_fn(c):  # function to update parameter c
 
 
 p = 0.05
-while p < 1:
+while p < 1.01:
     solver = RootFindingSolver(objective_fn=lambda: g.probs()[1],
                                objective_val=p,
                                update_param_fn=update_param_fn)
@@ -228,6 +228,7 @@ desired_p=0.80, solved_p=0.80000, c=0.7500000000000004
 desired_p=0.85, solved_p=0.85000, c=0.8235294117647065
 desired_p=0.90, solved_p=0.90000, c=0.8888888888888895
 desired_p=0.95, solved_p=0.95000, c=0.9473684210526316
+desired_p=1.00, solved_p=1.00000, c=1.0
 ```
 
 Note that the `LinearChain` has finite number of states $n=\lceil\frac{1}{c}\rceil$, meaning that there will be a state
@@ -241,18 +242,36 @@ See more: https://dota2.fandom.com/wiki/Random_Distribution
 
 For defining a custom chain, you can either extend the base classes (`Chain`, `FiniteChain`, `InfiniteChain`) or
 use the `LambdaChain`.
-This example defines a custom `AlgebraicChain` with exit probability computed as:
-```math
-e_k = \frac{\sqrt{c}.k}{\sqrt{1 + c.k^2}}
-```
-which has nice properties $e_0=0$ and $\lim_{k\rightarrow\infty}{e_k}=1$.
+
+This example defines:
+- A finite `QuadraticChain`:  $e_k = c.k^2$ with number of states $n=\lfloor\sqrt{\frac{1}{c}}\rfloor$.
+- An infinite `AlgebraicChain`: $e_k = \frac{\sqrt{c}.k}{\sqrt{1 + c.k^2}}$, which has nice properties
+  $e_0=0$ and $\lim_{k\rightarrow\infty}{e_k}=1$.
 
 ```python
 import math
 
-from pseudo_multinomial import *
-from pseudo_multinomial.chains import InfiniteChain
+from pseudo_multinomial import (
+    MasterChain, LinearChain, GeometricChain,
+    FiniteChain, InfiniteChain  # Base classes
+)
 from pseudo_multinomial.utils import check_chain
+
+
+class QuadraticChain(FiniteChain):
+    def __init__(self, c=1., *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.c = c
+
+    def exit_probability(self, k: int):  # override this method
+        return self.c * k ** 2
+
+    def n_states(self):  # override this method
+        return math.floor(math.sqrt(1 / self.c))
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}(c={self.c})'
+
 
 class AlgebraicChain(InfiniteChain):
     def __init__(self, c=1.):
@@ -265,33 +284,37 @@ class AlgebraicChain(InfiniteChain):
     def __repr__(self):
         return f'{self.__class__.__name__}(c={self.c})'
 
-chains = [
+
+g = MasterChain.from_pvals([
     LinearChain(c=0.4),
-    HarmonicChain(c=.3),
-    AlgebraicChain(c=7)
-]
-g = MasterChain.from_pvals(chains, repeat=False)
+    GeometricChain(a=1, r=.2),
+    QuadraticChain(c=.15),
+    AlgebraicChain(c=7),
+], repeat=False)
+
 check_chain(g, n_rolls=100000)
 ```
 Output:
 ```
-[Checking] n_rolls=1000000
+[Checking] n_rolls=100000
 MasterChain(
 	0: LinearChain(c=0.4),
-	1: HarmonicChain(c=0.3),
-	2: AlgebraicChain(c=7),
+	1: GeometricChain(a=1.0, r=0.2),
+	2: QuadraticChain(c=0.15),
+	3: AlgebraicChain(c=7),
 )
 --------------------------------------------------
 Chain transition matrix:
-[[0.  0.5 0.5]
- [0.5 0.  0.5]
- [0.5 0.5 0. ]]
+[[0.         0.33333333 0.33333333 0.33333333]
+ [0.33333333 0.         0.33333333 0.33333333]
+ [0.33333333 0.33333333 0.         0.33333333]
+ [0.33333333 0.33333333 0.33333333 0.        ]]
 --------------------------------------------------
-analytical probs: [0.31423414 0.49106532 0.19470054]
-simulated probs : [0.313601 0.491148 0.195251]
+analytical probs: [0.27814694 0.19536008 0.3541522  0.17234078]
+simulated probs : [0.27882 0.19422 0.353   0.17396]
 
-analytical expectations: [1.72       2.6879076  1.06571782]
-simulated expectations : [1.71657453 2.68924735 1.06696868]
+analytical expectations: [1.72       1.2080641  2.19       1.06571782]
+simulated expectations : [1.72569165 1.20193081 2.19281898 1.06743572]
 ```
 Besides, you can write your own Cython Chain and build from source.
 

@@ -38,5 +38,6 @@ class RootFindingSolver:
             else:
                 raise ValueError(f'Unknown method {method}.')
             return res.root
-        except:
+        except Exception as e:
+            raise e
             return None
