@@ -87,12 +87,16 @@ Otherwise, pull this repo and install from source (requires a C++ compiler):
 ```bash
 pip install .
 ```
+Or build binaries inplace for development:
+```bash
+python setup.py build_ext -i
+```
 
 ## Usage
 
 ### Examples
 
-#### Example 1:
+#### Example 1: Coin flip
 In this example, we replicate the perfect coin flip using a pair of `ForwardingChain`:
 ```python
 from pseudo_multinomial import MasterChain, ForwardingChain
@@ -105,7 +109,7 @@ g = MasterChain(
         [.5, .5],  # be chosen.
     ])
 
-print(g.pseudo_multinomial(100))
+print(g.pseudo_multinomial(100))  # draw 100 samples
 ```
 Output:
 ```
@@ -129,8 +133,8 @@ Output:
 [1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]
 ```
 
-#### Example 2:
-In this example, we create an unnatural 6-faced dice that usually generate consecutive results using
+#### Example 2: Unnatural dice
+In this example, we create an unnatural 6-faced dice that usually generate consecutive results using 
 the `HarmonicChain`:
 ```python
 from pseudo_multinomial import MasterChain, HarmonicChain
@@ -151,8 +155,11 @@ Output:
 ```
 [2 0 0 0 0 3 3 3 1 1 5 5 0 0 0 1 1 1 0 2 2 2 5 1 1 1 1 1 5 4 1 5 5 0 0 0 0 4 4 4 4 4 3 0 5 5 5 5 5 0 0 4 1 4 4 0 0 2 3 3 3 2 2 4 4 4 4 4 4 3 4 4 4 4 4 4 4 4 3 1 1 5 5 5 4 2 5 4 4 4 5 5 1 2 1 1 1 0 0 0]
 ```
-However, the nominal probability of each event is still exactly $1/6$:
+Each event occurs approximately 2.63 times consecutively, however, the nominal probability of each event is still
+exactly $1/6$:
 ```python
+print(g.expectations())
+# [2.63343366 2.63343366 2.63343366 2.63343366 2.63343366 2.63343366]
 print(g.probs())
 # [0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667]
 ```
@@ -223,6 +230,11 @@ desired_p=0.90, solved_p=0.90000, c=0.8888888888888895
 desired_p=0.95, solved_p=0.95000, c=0.9473684210526316
 ```
 
+Note that the `LinearChain` has finite number of states $n=\lceil\frac{1}{c}\rceil$, meaning that there will be a state
+at which the exit probability (probability of success event) is 1.
+Replacing it with any infinite chain will theoretically remove the upper bound of number of rolls before a success
+event procs.
+
 See more: https://dota2.fandom.com/wiki/Random_Distribution
 
 #### Example 4: Custom Chain
@@ -246,10 +258,9 @@ class AlgebraicChain(InfiniteChain):
     def __init__(self, c=1.):
         super().__init__()
         self.c = c
-        self._c_sqrt = math.sqrt(self.c)
 
-    def exit_probability(self, k: int):
-        return self._c_sqrt * k / math.sqrt(1 + self.c * k ** 2)
+    def exit_probability(self, k: int):  # override this method
+        return math.sqrt(self.c) * k / math.sqrt(1 + self.c * k ** 2)
 
     def __repr__(self):
         return f'{self.__class__.__name__}(c={self.c})'
@@ -282,6 +293,9 @@ simulated probs : [0.313601 0.491148 0.195251]
 analytical expectations: [1.72       2.6879076  1.06571782]
 simulated expectations : [1.71657453 2.68924735 1.06696868]
 ```
+Besides, you can write your own Cython Chain and build from source.
+
+For more examples, check the [`examples`](examples) folder (will be added soon).
 
 ## License
 

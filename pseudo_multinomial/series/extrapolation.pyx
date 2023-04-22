@@ -15,16 +15,6 @@ from libc cimport math
 from .fptr cimport DoubleSeriesFPtr, PyDoubleSeriesFPtr
 from ..utils.random_utils cimport mt19937, seed_mt19937, get_10_rand_bits
 
-# cdef extern from "<random>" namespace "std":
-#     cdef cppclass mt19937:
-#         mt19937() nogil
-#         mt19937(unsigned int seed) nogil
-
-# cdef extern from "../utils/random_utils.h":
-#     cdef void seed_mt19937(mt19937 gen) nogil
-#     cdef void seed_mt19937(mt19937 gen, int seed) nogil
-#     cdef unsigned long get_10_rand_bits() nogil
-
 __all__ = [
     'shanks',
 ]

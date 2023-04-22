@@ -1446,7 +1446,7 @@ typedef double (*__pyx_t_18pseudo_multinomial_6series_4fptr_dsf_ptr)(long);
 struct __pyx_opt_args_18pseudo_multinomial_6series_13extrapolation_wynn_eps_kernel;
 struct __pyx_opt_args_18pseudo_multinomial_6series_13extrapolation_wynn_eps;
 
-/* "pseudo_multinomial/series/extrapolation.pyx":44
+/* "pseudo_multinomial/series/extrapolation.pyx":34
  * # --------------------------------
  * # noinspection DuplicatedCode
  * cdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps_kernel(             # <<<<<<<<<<<<<<
@@ -1464,7 +1464,7 @@ struct __pyx_opt_args_18pseudo_multinomial_6series_13extrapolation_wynn_eps_kern
   int zero_div;
 };
 
-/* "pseudo_multinomial/series/extrapolation.pyx":199
+/* "pseudo_multinomial/series/extrapolation.pyx":189
  * 
  * @cython.binding(True)
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],             # <<<<<<<<<<<<<<
@@ -3294,7 +3294,7 @@ static PyObject *__pyx_codeobj__34;
 static PyObject *__pyx_codeobj__41;
 /* Late includes */
 
-/* "pseudo_multinomial/series/extrapolation.pyx":34
+/* "pseudo_multinomial/series/extrapolation.pyx":24
  * cdef double MACHINE_EPS = <double> np.finfo(np.float64).eps
  * 
  * cdef inline unsigned int min(unsigned int a, unsigned int b) nogil:             # <<<<<<<<<<<<<<
@@ -3306,7 +3306,7 @@ static CYTHON_INLINE unsigned int __pyx_f_18pseudo_multinomial_6series_13extrapo
   unsigned int __pyx_r;
   unsigned int __pyx_t_1;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":35
+  /* "pseudo_multinomial/series/extrapolation.pyx":25
  * 
  * cdef inline unsigned int min(unsigned int a, unsigned int b) nogil:
  *     return a if a < b else b             # <<<<<<<<<<<<<<
@@ -3321,7 +3321,7 @@ static CYTHON_INLINE unsigned int __pyx_f_18pseudo_multinomial_6series_13extrapo
   __pyx_r = __pyx_t_1;
   goto __pyx_L0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":34
+  /* "pseudo_multinomial/series/extrapolation.pyx":24
  * cdef double MACHINE_EPS = <double> np.finfo(np.float64).eps
  * 
  * cdef inline unsigned int min(unsigned int a, unsigned int b) nogil:             # <<<<<<<<<<<<<<
@@ -3334,7 +3334,7 @@ static CYTHON_INLINE unsigned int __pyx_f_18pseudo_multinomial_6series_13extrapo
   return __pyx_r;
 }
 
-/* "pseudo_multinomial/series/extrapolation.pyx":37
+/* "pseudo_multinomial/series/extrapolation.pyx":27
  *     return a if a < b else b
  * 
  * cdef inline unsigned int max(unsigned int a, unsigned int b) nogil:             # <<<<<<<<<<<<<<
@@ -3346,7 +3346,7 @@ static CYTHON_INLINE unsigned int __pyx_f_18pseudo_multinomial_6series_13extrapo
   unsigned int __pyx_r;
   unsigned int __pyx_t_1;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":38
+  /* "pseudo_multinomial/series/extrapolation.pyx":28
  * 
  * cdef inline unsigned int max(unsigned int a, unsigned int b) nogil:
  *     return a if a > b else b             # <<<<<<<<<<<<<<
@@ -3361,7 +3361,7 @@ static CYTHON_INLINE unsigned int __pyx_f_18pseudo_multinomial_6series_13extrapo
   __pyx_r = __pyx_t_1;
   goto __pyx_L0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":37
+  /* "pseudo_multinomial/series/extrapolation.pyx":27
  *     return a if a < b else b
  * 
  * cdef inline unsigned int max(unsigned int a, unsigned int b) nogil:             # <<<<<<<<<<<<<<
@@ -3374,7 +3374,7 @@ static CYTHON_INLINE unsigned int __pyx_f_18pseudo_multinomial_6series_13extrapo
   return __pyx_r;
 }
 
-/* "pseudo_multinomial/series/extrapolation.pyx":44
+/* "pseudo_multinomial/series/extrapolation.pyx":34
  * # --------------------------------
  * # noinspection DuplicatedCode
  * cdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps_kernel(             # <<<<<<<<<<<<<<
@@ -3470,7 +3470,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __pyx_pybuffernd_eps.data = NULL;
   __pyx_pybuffernd_eps.rcbuffer = &__pyx_pybuffer_eps;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":53
+  /* "pseudo_multinomial/series/extrapolation.pyx":43
  *         unsigned int extend_step = 50,
  *         int zero_div = 0):
  *     extend_step = max(extend_step, 1)             # <<<<<<<<<<<<<<
@@ -3479,7 +3479,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   __pyx_v_extend_step = __pyx_f_18pseudo_multinomial_6series_13extrapolation_max(__pyx_v_extend_step, 1);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":55
+  /* "pseudo_multinomial/series/extrapolation.pyx":45
  *     extend_step = max(extend_step, 1)
  *     cdef:
  *         unsigned int max_ncols = (max_r + 1) * 2 + 1 if max_r > 0 else 0             # <<<<<<<<<<<<<<
@@ -3493,7 +3493,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   }
   __pyx_v_max_ncols = __pyx_t_1;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":56
+  /* "pseudo_multinomial/series/extrapolation.pyx":46
  *     cdef:
  *         unsigned int max_ncols = (max_r + 1) * 2 + 1 if max_r > 0 else 0
  *         unsigned int init_ncols = max_iter if max_iter > 0 else extend_step             # <<<<<<<<<<<<<<
@@ -3507,16 +3507,16 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   }
   __pyx_v_init_ncols = __pyx_t_2;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":57
+  /* "pseudo_multinomial/series/extrapolation.pyx":47
  *         unsigned int max_ncols = (max_r + 1) * 2 + 1 if max_r > 0 else 0
  *         unsigned int init_ncols = max_iter if max_iter > 0 else extend_step
  *         array.array double_array_template = array.array('d', [])             # <<<<<<<<<<<<<<
  *         array.array int_array_template = array.array('I', [])
  *         cnp.ndarray[cnp.float64_t, ndim=2] rows = np.empty((2, init_ncols), dtype=np.float64)
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_n_u_d);
   __Pyx_GIVEREF(__pyx_n_u_d);
@@ -3524,22 +3524,22 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_double_array_template = ((arrayobject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":58
+  /* "pseudo_multinomial/series/extrapolation.pyx":48
  *         unsigned int init_ncols = max_iter if max_iter > 0 else extend_step
  *         array.array double_array_template = array.array('d', [])
  *         array.array int_array_template = array.array('I', [])             # <<<<<<<<<<<<<<
  *         cnp.ndarray[cnp.float64_t, ndim=2] rows = np.empty((2, init_ncols), dtype=np.float64)
  *         cnp.ndarray[cnp.float64_t, ndim=2] eps = np.empty((3, init_ncols), dtype=np.float64)
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_n_u_I);
   __Pyx_GIVEREF(__pyx_n_u_I);
@@ -3547,27 +3547,27 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_int_array_template = ((arrayobject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":59
+  /* "pseudo_multinomial/series/extrapolation.pyx":49
  *         array.array double_array_template = array.array('d', [])
  *         array.array int_array_template = array.array('I', [])
  *         cnp.ndarray[cnp.float64_t, ndim=2] rows = np.empty((2, init_ncols), dtype=np.float64)             # <<<<<<<<<<<<<<
  *         cnp.ndarray[cnp.float64_t, ndim=2] eps = np.empty((3, init_ncols), dtype=np.float64)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_init_ncols); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_init_ncols); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_int_2);
   __Pyx_GIVEREF(__pyx_int_2);
@@ -3575,32 +3575,32 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 59, __pyx_L1_error)
+  if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 49, __pyx_L1_error)
   __pyx_t_8 = ((PyArrayObject *)__pyx_t_7);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rows.rcbuffer->pybuffer, (PyObject*)__pyx_t_8, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_rows = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 59, __pyx_L1_error)
+      __PYX_ERR(0, 49, __pyx_L1_error)
     } else {__pyx_pybuffernd_rows.diminfo[0].strides = __pyx_pybuffernd_rows.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rows.diminfo[0].shape = __pyx_pybuffernd_rows.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_rows.diminfo[1].strides = __pyx_pybuffernd_rows.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_rows.diminfo[1].shape = __pyx_pybuffernd_rows.rcbuffer->pybuffer.shape[1];
     }
   }
@@ -3608,21 +3608,21 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __pyx_v_rows = ((PyArrayObject *)__pyx_t_7);
   __pyx_t_7 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":60
+  /* "pseudo_multinomial/series/extrapolation.pyx":50
  *         array.array int_array_template = array.array('I', [])
  *         cnp.ndarray[cnp.float64_t, ndim=2] rows = np.empty((2, init_ncols), dtype=np.float64)
  *         cnp.ndarray[cnp.float64_t, ndim=2] eps = np.empty((3, init_ncols), dtype=np.float64)             # <<<<<<<<<<<<<<
  * 
  *     rows[0, 0] = start_val + f.eval(start)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyInt_From_unsigned_int(__pyx_v_init_ncols); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_unsigned_int(__pyx_v_init_ncols); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_int_3);
   __Pyx_GIVEREF(__pyx_int_3);
@@ -3630,32 +3630,32 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_7);
   __pyx_t_7 = 0;
-  __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 60, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 50, __pyx_L1_error)
   __pyx_t_9 = ((PyArrayObject *)__pyx_t_6);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_eps.rcbuffer->pybuffer, (PyObject*)__pyx_t_9, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_eps = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 60, __pyx_L1_error)
+      __PYX_ERR(0, 50, __pyx_L1_error)
     } else {__pyx_pybuffernd_eps.diminfo[0].strides = __pyx_pybuffernd_eps.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_eps.diminfo[0].shape = __pyx_pybuffernd_eps.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_eps.diminfo[1].strides = __pyx_pybuffernd_eps.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_eps.diminfo[1].shape = __pyx_pybuffernd_eps.rcbuffer->pybuffer.shape[1];
     }
   }
@@ -3663,31 +3663,31 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __pyx_v_eps = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":62
+  /* "pseudo_multinomial/series/extrapolation.pyx":52
  *         cnp.ndarray[cnp.float64_t, ndim=2] eps = np.empty((3, init_ncols), dtype=np.float64)
  * 
  *     rows[0, 0] = start_val + f.eval(start)             # <<<<<<<<<<<<<<
  *     cdef double term = f.eval(start + 1)
  *     cdef double prev_term = term
  */
-  __pyx_t_10 = ((struct __pyx_vtabstruct_18pseudo_multinomial_6series_4fptr_DoubleSeriesFPtr *)__pyx_v_f->__pyx_vtab)->eval(__pyx_v_f, __pyx_v_start); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_10 = ((struct __pyx_vtabstruct_18pseudo_multinomial_6series_4fptr_DoubleSeriesFPtr *)__pyx_v_f->__pyx_vtab)->eval(__pyx_v_f, __pyx_v_start); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 52, __pyx_L1_error)
   __pyx_t_11 = 0;
   __pyx_t_12 = 0;
   if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_pybuffernd_rows.diminfo[0].shape;
   if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_pybuffernd_rows.diminfo[1].shape;
   *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[1].strides) = (__pyx_v_start_val + __pyx_t_10);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":63
+  /* "pseudo_multinomial/series/extrapolation.pyx":53
  * 
  *     rows[0, 0] = start_val + f.eval(start)
  *     cdef double term = f.eval(start + 1)             # <<<<<<<<<<<<<<
  *     cdef double prev_term = term
  *     rows[1, 0] = rows[0, 0] + term
  */
-  __pyx_t_10 = ((struct __pyx_vtabstruct_18pseudo_multinomial_6series_4fptr_DoubleSeriesFPtr *)__pyx_v_f->__pyx_vtab)->eval(__pyx_v_f, (__pyx_v_start + 1)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_10 = ((struct __pyx_vtabstruct_18pseudo_multinomial_6series_4fptr_DoubleSeriesFPtr *)__pyx_v_f->__pyx_vtab)->eval(__pyx_v_f, (__pyx_v_start + 1)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 53, __pyx_L1_error)
   __pyx_v_term = __pyx_t_10;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":64
+  /* "pseudo_multinomial/series/extrapolation.pyx":54
  *     rows[0, 0] = start_val + f.eval(start)
  *     cdef double term = f.eval(start + 1)
  *     cdef double prev_term = term             # <<<<<<<<<<<<<<
@@ -3696,7 +3696,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   __pyx_v_prev_term = __pyx_v_term;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":65
+  /* "pseudo_multinomial/series/extrapolation.pyx":55
  *     cdef double term = f.eval(start + 1)
  *     cdef double prev_term = term
  *     rows[1, 0] = rows[0, 0] + term             # <<<<<<<<<<<<<<
@@ -3713,7 +3713,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   if (__pyx_t_14 < 0) __pyx_t_14 += __pyx_pybuffernd_rows.diminfo[1].shape;
   *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_rows.diminfo[1].strides) = ((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[1].strides)) + __pyx_v_term);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":66
+  /* "pseudo_multinomial/series/extrapolation.pyx":56
  *     cdef double prev_term = term
  *     rows[1, 0] = rows[0, 0] + term
  *     eps[1, 0] = term             # <<<<<<<<<<<<<<
@@ -3726,7 +3726,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_pybuffernd_eps.diminfo[1].shape;
   *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_12, __pyx_pybuffernd_eps.diminfo[1].strides) = __pyx_v_term;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":67
+  /* "pseudo_multinomial/series/extrapolation.pyx":57
  *     rows[1, 0] = rows[0, 0] + term
  *     eps[1, 0] = term
  *     eps[0, 0] = rows[1, 0]             # <<<<<<<<<<<<<<
@@ -3743,7 +3743,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_pybuffernd_eps.diminfo[1].shape;
   *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_14, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_13, __pyx_pybuffernd_eps.diminfo[1].strides) = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[1].strides));
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":68
+  /* "pseudo_multinomial/series/extrapolation.pyx":58
  *     eps[1, 0] = term
  *     eps[0, 0] = rows[1, 0]
  *     eps[2, 0] = 1             # <<<<<<<<<<<<<<
@@ -3756,7 +3756,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_pybuffernd_eps.diminfo[1].shape;
   *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_12, __pyx_pybuffernd_eps.diminfo[1].strides) = 1.0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":69
+  /* "pseudo_multinomial/series/extrapolation.pyx":59
  *     eps[0, 0] = rows[1, 0]
  *     eps[2, 0] = 1
  *     if math.fabs(term) <= atol:             # <<<<<<<<<<<<<<
@@ -3766,7 +3766,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __pyx_t_15 = ((fabs(__pyx_v_term) <= __pyx_v_atol) != 0);
   if (__pyx_t_15) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":70
+    /* "pseudo_multinomial/series/extrapolation.pyx":60
  *     eps[2, 0] = 1
  *     if math.fabs(term) <= atol:
  *         return eps[:, :1]             # <<<<<<<<<<<<<<
@@ -3774,14 +3774,14 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  *     eps[:, 1:] = math.NAN
  */
     __Pyx_XDECREF(((PyObject *)__pyx_r));
-    __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_eps), __pyx_tuple__3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_eps), __pyx_tuple__3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 70, __pyx_L1_error)
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 60, __pyx_L1_error)
     __pyx_r = ((PyArrayObject *)__pyx_t_6);
     __pyx_t_6 = 0;
     goto __pyx_L0;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":69
+    /* "pseudo_multinomial/series/extrapolation.pyx":59
  *     eps[0, 0] = rows[1, 0]
  *     eps[2, 0] = 1
  *     if math.fabs(term) <= atol:             # <<<<<<<<<<<<<<
@@ -3790,19 +3790,19 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":72
+  /* "pseudo_multinomial/series/extrapolation.pyx":62
  *         return eps[:, :1]
  * 
  *     eps[:, 1:] = math.NAN             # <<<<<<<<<<<<<<
  *     rows[0, 0] = rows[1, 0]
  *     rows[0, 1] = 1 / term
  */
-  __pyx_t_6 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_eps), __pyx_tuple__5, __pyx_t_6) < 0)) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_eps), __pyx_tuple__5, __pyx_t_6) < 0)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":73
+  /* "pseudo_multinomial/series/extrapolation.pyx":63
  * 
  *     eps[:, 1:] = math.NAN
  *     rows[0, 0] = rows[1, 0]             # <<<<<<<<<<<<<<
@@ -3819,7 +3819,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   if (__pyx_t_14 < 0) __pyx_t_14 += __pyx_pybuffernd_rows.diminfo[1].shape;
   *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_rows.diminfo[1].strides) = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[1].strides));
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":74
+  /* "pseudo_multinomial/series/extrapolation.pyx":64
  *     eps[:, 1:] = math.NAN
  *     rows[0, 0] = rows[1, 0]
  *     rows[0, 1] = 1 / term             # <<<<<<<<<<<<<<
@@ -3832,19 +3832,19 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_pybuffernd_rows.diminfo[1].shape;
   *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[1].strides) = (1.0 / __pyx_v_term);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":75
+  /* "pseudo_multinomial/series/extrapolation.pyx":65
  *     rows[0, 0] = rows[1, 0]
  *     rows[0, 1] = 1 / term
  *     rows[:, 2:] = math.NAN             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_t_6 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_rows), __pyx_tuple__7, __pyx_t_6) < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_rows), __pyx_tuple__7, __pyx_t_6) < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":80
+  /* "pseudo_multinomial/series/extrapolation.pyx":70
  *         unsigned int i, j, r, ncols, ncols_used
  *         double denom
  *         bint force_return = False             # <<<<<<<<<<<<<<
@@ -3853,7 +3853,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   __pyx_v_force_return = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":81
+  /* "pseudo_multinomial/series/extrapolation.pyx":71
  *         double denom
  *         bint force_return = False
  *     i = 2             # <<<<<<<<<<<<<<
@@ -3862,7 +3862,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   __pyx_v_i = 2;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":82
+  /* "pseudo_multinomial/series/extrapolation.pyx":72
  *         bint force_return = False
  *     i = 2
  *     ncols = i + 1             # <<<<<<<<<<<<<<
@@ -3871,7 +3871,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   __pyx_v_ncols = (__pyx_v_i + 1);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":83
+  /* "pseudo_multinomial/series/extrapolation.pyx":73
  *     i = 2
  *     ncols = i + 1
  *     ncols_used = ncols             # <<<<<<<<<<<<<<
@@ -3880,7 +3880,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   __pyx_v_ncols_used = __pyx_v_ncols;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":84
+  /* "pseudo_multinomial/series/extrapolation.pyx":74
  *     ncols = i + 1
  *     ncols_used = ncols
  *     while True:             # <<<<<<<<<<<<<<
@@ -3889,7 +3889,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   while (1) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":85
+    /* "pseudo_multinomial/series/extrapolation.pyx":75
  *     ncols_used = ncols
  *     while True:
  *         if i >= max_iter > 0:             # <<<<<<<<<<<<<<
@@ -3903,7 +3903,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     __pyx_t_16 = (__pyx_t_15 != 0);
     if (__pyx_t_16) {
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":86
+      /* "pseudo_multinomial/series/extrapolation.pyx":76
  *     while True:
  *         if i >= max_iter > 0:
  *             break             # <<<<<<<<<<<<<<
@@ -3912,7 +3912,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
       goto __pyx_L5_break;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":85
+      /* "pseudo_multinomial/series/extrapolation.pyx":75
  *     ncols_used = ncols
  *     while True:
  *         if i >= max_iter > 0:             # <<<<<<<<<<<<<<
@@ -3921,17 +3921,17 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
     }
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":87
+    /* "pseudo_multinomial/series/extrapolation.pyx":77
  *         if i >= max_iter > 0:
  *             break
  *         term = f.eval(start + i)             # <<<<<<<<<<<<<<
  *         rows[1, 0] = rows[0, 0] + term
  * 
  */
-    __pyx_t_10 = ((struct __pyx_vtabstruct_18pseudo_multinomial_6series_4fptr_DoubleSeriesFPtr *)__pyx_v_f->__pyx_vtab)->eval(__pyx_v_f, (__pyx_v_start + __pyx_v_i)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_10 = ((struct __pyx_vtabstruct_18pseudo_multinomial_6series_4fptr_DoubleSeriesFPtr *)__pyx_v_f->__pyx_vtab)->eval(__pyx_v_f, (__pyx_v_start + __pyx_v_i)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 77, __pyx_L1_error)
     __pyx_v_term = __pyx_t_10;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":88
+    /* "pseudo_multinomial/series/extrapolation.pyx":78
  *             break
  *         term = f.eval(start + i)
  *         rows[1, 0] = rows[0, 0] + term             # <<<<<<<<<<<<<<
@@ -3948,7 +3948,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_pybuffernd_rows.diminfo[1].shape;
     *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_14, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_13, __pyx_pybuffernd_rows.diminfo[1].strides) = ((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[1].strides)) + __pyx_v_term);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":90
+    /* "pseudo_multinomial/series/extrapolation.pyx":80
  *         rows[1, 0] = rows[0, 0] + term
  * 
  *         eps[1, 0] = term             # <<<<<<<<<<<<<<
@@ -3961,7 +3961,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_pybuffernd_eps.diminfo[1].shape;
     *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_12, __pyx_pybuffernd_eps.diminfo[1].strides) = __pyx_v_term;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":91
+    /* "pseudo_multinomial/series/extrapolation.pyx":81
  * 
  *         eps[1, 0] = term
  *         eps[0, 0] = rows[1, 0]             # <<<<<<<<<<<<<<
@@ -3978,7 +3978,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     if (__pyx_t_14 < 0) __pyx_t_14 += __pyx_pybuffernd_eps.diminfo[1].shape;
     *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_eps.diminfo[1].strides) = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[1].strides));
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":92
+    /* "pseudo_multinomial/series/extrapolation.pyx":82
  *         eps[1, 0] = term
  *         eps[0, 0] = rows[1, 0]
  *         eps[2, 0] = i             # <<<<<<<<<<<<<<
@@ -3991,7 +3991,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_pybuffernd_eps.diminfo[1].shape;
     *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_12, __pyx_pybuffernd_eps.diminfo[1].strides) = __pyx_v_i;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":93
+    /* "pseudo_multinomial/series/extrapolation.pyx":83
  *         eps[0, 0] = rows[1, 0]
  *         eps[2, 0] = i
  *         if not math.isfinite(term) or math.fabs(term) <= atol:             # <<<<<<<<<<<<<<
@@ -4009,7 +4009,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_16) {
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":94
+      /* "pseudo_multinomial/series/extrapolation.pyx":84
  *         eps[2, 0] = i
  *         if not math.isfinite(term) or math.fabs(term) <= atol:
  *             break             # <<<<<<<<<<<<<<
@@ -4018,7 +4018,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
       goto __pyx_L5_break;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":93
+      /* "pseudo_multinomial/series/extrapolation.pyx":83
  *         eps[0, 0] = rows[1, 0]
  *         eps[2, 0] = i
  *         if not math.isfinite(term) or math.fabs(term) <= atol:             # <<<<<<<<<<<<<<
@@ -4027,7 +4027,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
     }
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":95
+    /* "pseudo_multinomial/series/extrapolation.pyx":85
  *         if not math.isfinite(term) or math.fabs(term) <= atol:
  *             break
  *         elif term / prev_term >= 1:             # <<<<<<<<<<<<<<
@@ -4037,7 +4037,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     __pyx_t_16 = (((__pyx_v_term / __pyx_v_prev_term) >= 1.0) != 0);
     if (__pyx_t_16) {
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":96
+      /* "pseudo_multinomial/series/extrapolation.pyx":86
  *             break
  *         elif term / prev_term >= 1:
  *             if math.copysign(1, term) * math.copysign(1, prev_term) > 0:             # <<<<<<<<<<<<<<
@@ -4047,7 +4047,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       __pyx_t_16 = (((copysign(1.0, __pyx_v_term) * copysign(1.0, __pyx_v_prev_term)) > 0.0) != 0);
       if (__pyx_t_16) {
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":97
+        /* "pseudo_multinomial/series/extrapolation.pyx":87
  *         elif term / prev_term >= 1:
  *             if math.copysign(1, term) * math.copysign(1, prev_term) > 0:
  *                 eps[0, 0] = math.copysign(math.INFINITY, eps[0, 0])             # <<<<<<<<<<<<<<
@@ -4064,7 +4064,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
         if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_pybuffernd_eps.diminfo[1].shape;
         *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_14, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_13, __pyx_pybuffernd_eps.diminfo[1].strides) = copysign(INFINITY, (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_11, __pyx_pybuffernd_eps.diminfo[1].strides)));
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":96
+        /* "pseudo_multinomial/series/extrapolation.pyx":86
  *             break
  *         elif term / prev_term >= 1:
  *             if math.copysign(1, term) * math.copysign(1, prev_term) > 0:             # <<<<<<<<<<<<<<
@@ -4074,7 +4074,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
         goto __pyx_L10;
       }
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":99
+      /* "pseudo_multinomial/series/extrapolation.pyx":89
  *                 eps[0, 0] = math.copysign(math.INFINITY, eps[0, 0])
  *             else:
  *                 eps[0, 0] = math.NAN             # <<<<<<<<<<<<<<
@@ -4090,7 +4090,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       }
       __pyx_L10:;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":100
+      /* "pseudo_multinomial/series/extrapolation.pyx":90
  *             else:
  *                 eps[0, 0] = math.NAN
  *             break             # <<<<<<<<<<<<<<
@@ -4099,7 +4099,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
       goto __pyx_L5_break;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":95
+      /* "pseudo_multinomial/series/extrapolation.pyx":85
  *         if not math.isfinite(term) or math.fabs(term) <= atol:
  *             break
  *         elif term / prev_term >= 1:             # <<<<<<<<<<<<<<
@@ -4108,7 +4108,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
     }
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":101
+    /* "pseudo_multinomial/series/extrapolation.pyx":91
  *                 eps[0, 0] = math.NAN
  *             break
  *         rows[1, 1] = 1 / term  # first dummy column             # <<<<<<<<<<<<<<
@@ -4121,7 +4121,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_pybuffernd_rows.diminfo[1].shape;
     *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[1].strides) = (1.0 / __pyx_v_term);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":103
+    /* "pseudo_multinomial/series/extrapolation.pyx":93
  *         rows[1, 1] = 1 / term  # first dummy column
  * 
  *         j = 2             # <<<<<<<<<<<<<<
@@ -4130,7 +4130,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
     __pyx_v_j = 2;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":104
+    /* "pseudo_multinomial/series/extrapolation.pyx":94
  * 
  *         j = 2
  *         while j < ncols:             # <<<<<<<<<<<<<<
@@ -4141,7 +4141,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       __pyx_t_16 = ((__pyx_v_j < __pyx_v_ncols) != 0);
       if (!__pyx_t_16) break;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":105
+      /* "pseudo_multinomial/series/extrapolation.pyx":95
  *         j = 2
  *         while j < ncols:
  *             denom = rows[1, j - 1] - rows[0, j - 1]             # <<<<<<<<<<<<<<
@@ -4158,7 +4158,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       if (__pyx_t_14 < 0) __pyx_t_14 += __pyx_pybuffernd_rows.diminfo[1].shape;
       __pyx_v_denom = ((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[1].strides)) - (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_rows.diminfo[1].strides)));
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":106
+      /* "pseudo_multinomial/series/extrapolation.pyx":96
  *         while j < ncols:
  *             denom = rows[1, j - 1] - rows[0, j - 1]
  *             if denom == 0:             # <<<<<<<<<<<<<<
@@ -4168,7 +4168,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       __pyx_t_16 = ((__pyx_v_denom == 0.0) != 0);
       if (__pyx_t_16) {
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":107
+        /* "pseudo_multinomial/series/extrapolation.pyx":97
  *             denom = rows[1, j - 1] - rows[0, j - 1]
  *             if denom == 0:
  *                 if zero_div < 2:             # <<<<<<<<<<<<<<
@@ -4178,24 +4178,24 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
         __pyx_t_16 = ((__pyx_v_zero_div < 2) != 0);
         if (__pyx_t_16) {
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":108
+          /* "pseudo_multinomial/series/extrapolation.pyx":98
  *             if denom == 0:
  *                 if zero_div < 2:
  *                     rows[1, j:ncols] = math.NAN             # <<<<<<<<<<<<<<
  *                     ncols = j
  *                     if zero_div == 0:  # return
  */
-          __pyx_t_6 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 108, __pyx_L1_error)
+          __pyx_t_6 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 98, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_7 = __Pyx_PyInt_From_unsigned_int(__pyx_v_ncols); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 108, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyInt_From_unsigned_int(__pyx_v_ncols); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 98, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_5 = PySlice_New(__pyx_t_3, __pyx_t_7, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
+          __pyx_t_5 = PySlice_New(__pyx_t_3, __pyx_t_7, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 108, __pyx_L1_error)
+          __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 98, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_INCREF(__pyx_int_1);
           __Pyx_GIVEREF(__pyx_int_1);
@@ -4203,11 +4203,11 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
           __Pyx_GIVEREF(__pyx_t_5);
           PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5);
           __pyx_t_5 = 0;
-          if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_rows), __pyx_t_7, __pyx_t_6) < 0)) __PYX_ERR(0, 108, __pyx_L1_error)
+          if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_rows), __pyx_t_7, __pyx_t_6) < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":109
+          /* "pseudo_multinomial/series/extrapolation.pyx":99
  *                 if zero_div < 2:
  *                     rows[1, j:ncols] = math.NAN
  *                     ncols = j             # <<<<<<<<<<<<<<
@@ -4216,7 +4216,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
           __pyx_v_ncols = __pyx_v_j;
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":110
+          /* "pseudo_multinomial/series/extrapolation.pyx":100
  *                     rows[1, j:ncols] = math.NAN
  *                     ncols = j
  *                     if zero_div == 0:  # return             # <<<<<<<<<<<<<<
@@ -4226,7 +4226,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
           __pyx_t_16 = ((__pyx_v_zero_div == 0) != 0);
           if (__pyx_t_16) {
 
-            /* "pseudo_multinomial/series/extrapolation.pyx":111
+            /* "pseudo_multinomial/series/extrapolation.pyx":101
  *                     ncols = j
  *                     if zero_div == 0:  # return
  *                         force_return = True             # <<<<<<<<<<<<<<
@@ -4235,7 +4235,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
             __pyx_v_force_return = 1;
 
-            /* "pseudo_multinomial/series/extrapolation.pyx":110
+            /* "pseudo_multinomial/series/extrapolation.pyx":100
  *                     rows[1, j:ncols] = math.NAN
  *                     ncols = j
  *                     if zero_div == 0:  # return             # <<<<<<<<<<<<<<
@@ -4244,7 +4244,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
           }
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":112
+          /* "pseudo_multinomial/series/extrapolation.pyx":102
  *                     if zero_div == 0:  # return
  *                         force_return = True
  *                     break             # <<<<<<<<<<<<<<
@@ -4253,7 +4253,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
           goto __pyx_L12_break;
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":107
+          /* "pseudo_multinomial/series/extrapolation.pyx":97
  *             denom = rows[1, j - 1] - rows[0, j - 1]
  *             if denom == 0:
  *                 if zero_div < 2:             # <<<<<<<<<<<<<<
@@ -4262,7 +4262,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
         }
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":114
+        /* "pseudo_multinomial/series/extrapolation.pyx":104
  *                     break
  *                 else:  # random
  *                     denom = (<double> get_10_rand_bits() + 1) * MACHINE_EPS             # <<<<<<<<<<<<<<
@@ -4273,7 +4273,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
           __pyx_v_denom = ((((double)get_10_rand_bits()) + 1.0) * __pyx_v_18pseudo_multinomial_6series_13extrapolation_MACHINE_EPS);
         }
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":106
+        /* "pseudo_multinomial/series/extrapolation.pyx":96
  *         while j < ncols:
  *             denom = rows[1, j - 1] - rows[0, j - 1]
  *             if denom == 0:             # <<<<<<<<<<<<<<
@@ -4282,7 +4282,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
       }
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":115
+      /* "pseudo_multinomial/series/extrapolation.pyx":105
  *                 else:  # random
  *                     denom = (<double> get_10_rand_bits() + 1) * MACHINE_EPS
  *             rows[1, j] = rows[0, j - 2] + 1 / denom             # <<<<<<<<<<<<<<
@@ -4298,7 +4298,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_pybuffernd_rows.diminfo[0].shape;
       *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_rows.diminfo[1].strides) = ((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_14, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_13, __pyx_pybuffernd_rows.diminfo[1].strides)) + (1.0 / __pyx_v_denom));
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":116
+      /* "pseudo_multinomial/series/extrapolation.pyx":106
  *                     denom = (<double> get_10_rand_bits() + 1) * MACHINE_EPS
  *             rows[1, j] = rows[0, j - 2] + 1 / denom
  *             if not j & 1:             # <<<<<<<<<<<<<<
@@ -4308,7 +4308,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       __pyx_t_16 = ((!((__pyx_v_j & 1) != 0)) != 0);
       if (__pyx_t_16) {
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":117
+        /* "pseudo_multinomial/series/extrapolation.pyx":107
  *             rows[1, j] = rows[0, j - 2] + 1 / denom
  *             if not j & 1:
  *                 r = j // 2             # <<<<<<<<<<<<<<
@@ -4317,7 +4317,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
         __pyx_v_r = (__pyx_v_j / 2);
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":118
+        /* "pseudo_multinomial/series/extrapolation.pyx":108
  *             if not j & 1:
  *                 r = j // 2
  *                 eps[1, r] = rows[1, j] - eps[0, r]             # <<<<<<<<<<<<<<
@@ -4335,7 +4335,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
         if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_pybuffernd_eps.diminfo[0].shape;
         *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_19, __pyx_pybuffernd_eps.diminfo[1].strides) = ((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_rows.diminfo[1].strides)) - (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_14, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_eps.diminfo[1].strides)));
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":119
+        /* "pseudo_multinomial/series/extrapolation.pyx":109
  *                 r = j // 2
  *                 eps[1, r] = rows[1, j] - eps[0, r]
  *                 eps[0, r] = rows[1, j]             # <<<<<<<<<<<<<<
@@ -4350,7 +4350,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
         if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_pybuffernd_eps.diminfo[0].shape;
         *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_eps.diminfo[1].strides) = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_rows.rcbuffer->pybuffer.buf, __pyx_t_14, __pyx_pybuffernd_rows.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_rows.diminfo[1].strides));
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":120
+        /* "pseudo_multinomial/series/extrapolation.pyx":110
  *                 eps[1, r] = rows[1, j] - eps[0, r]
  *                 eps[0, r] = rows[1, j]
  *                 eps[2, r] = i             # <<<<<<<<<<<<<<
@@ -4362,7 +4362,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
         if (__pyx_t_14 < 0) __pyx_t_14 += __pyx_pybuffernd_eps.diminfo[0].shape;
         *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_float64_t *, __pyx_pybuffernd_eps.rcbuffer->pybuffer.buf, __pyx_t_14, __pyx_pybuffernd_eps.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_eps.diminfo[1].strides) = __pyx_v_i;
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":116
+        /* "pseudo_multinomial/series/extrapolation.pyx":106
  *                     denom = (<double> get_10_rand_bits() + 1) * MACHINE_EPS
  *             rows[1, j] = rows[0, j - 2] + 1 / denom
  *             if not j & 1:             # <<<<<<<<<<<<<<
@@ -4371,7 +4371,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
       }
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":121
+      /* "pseudo_multinomial/series/extrapolation.pyx":111
  *                 eps[0, r] = rows[1, j]
  *                 eps[2, r] = i
  *             j += 1             # <<<<<<<<<<<<<<
@@ -4382,19 +4382,19 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     }
     __pyx_L12_break:;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":123
+    /* "pseudo_multinomial/series/extrapolation.pyx":113
  *             j += 1
  *         # advance
  *         rows[0, :ncols] = rows[1, :ncols]             # <<<<<<<<<<<<<<
  *         i += 1
  *         ncols = min(ncols + 1, max_ncols) if max_ncols > 0 else ncols + 1
  */
-    __pyx_t_6 = __Pyx_PyInt_From_unsigned_int(__pyx_v_ncols); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_unsigned_int(__pyx_v_ncols); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = PySlice_New(Py_None, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_7 = PySlice_New(Py_None, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_int_1);
     __Pyx_GIVEREF(__pyx_int_1);
@@ -4402,15 +4402,15 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_rows), __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_rows), __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyInt_From_unsigned_int(__pyx_v_ncols); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_unsigned_int(__pyx_v_ncols); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = PySlice_New(Py_None, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_5 = PySlice_New(Py_None, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
@@ -4418,11 +4418,11 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
     __pyx_t_5 = 0;
-    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_rows), __pyx_t_6, __pyx_t_7) < 0)) __PYX_ERR(0, 123, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_rows), __pyx_t_6, __pyx_t_7) < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":124
+    /* "pseudo_multinomial/series/extrapolation.pyx":114
  *         # advance
  *         rows[0, :ncols] = rows[1, :ncols]
  *         i += 1             # <<<<<<<<<<<<<<
@@ -4431,7 +4431,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
     __pyx_v_i = (__pyx_v_i + 1);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":125
+    /* "pseudo_multinomial/series/extrapolation.pyx":115
  *         rows[0, :ncols] = rows[1, :ncols]
  *         i += 1
  *         ncols = min(ncols + 1, max_ncols) if max_ncols > 0 else ncols + 1             # <<<<<<<<<<<<<<
@@ -4445,7 +4445,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     }
     __pyx_v_ncols = __pyx_t_1;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":126
+    /* "pseudo_multinomial/series/extrapolation.pyx":116
  *         i += 1
  *         ncols = min(ncols + 1, max_ncols) if max_ncols > 0 else ncols + 1
  *         ncols_used = max(ncols, ncols_used)             # <<<<<<<<<<<<<<
@@ -4454,7 +4454,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
     __pyx_v_ncols_used = __pyx_f_18pseudo_multinomial_6series_13extrapolation_max(__pyx_v_ncols, __pyx_v_ncols_used);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":127
+    /* "pseudo_multinomial/series/extrapolation.pyx":117
  *         ncols = min(ncols + 1, max_ncols) if max_ncols > 0 else ncols + 1
  *         ncols_used = max(ncols, ncols_used)
  *         if force_return:             # <<<<<<<<<<<<<<
@@ -4464,7 +4464,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     __pyx_t_16 = (__pyx_v_force_return != 0);
     if (__pyx_t_16) {
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":128
+      /* "pseudo_multinomial/series/extrapolation.pyx":118
  *         ncols_used = max(ncols, ncols_used)
  *         if force_return:
  *             break             # <<<<<<<<<<<<<<
@@ -4473,7 +4473,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
       goto __pyx_L5_break;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":127
+      /* "pseudo_multinomial/series/extrapolation.pyx":117
  *         ncols = min(ncols + 1, max_ncols) if max_ncols > 0 else ncols + 1
  *         ncols_used = max(ncols, ncols_used)
  *         if force_return:             # <<<<<<<<<<<<<<
@@ -4482,7 +4482,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
     }
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":129
+    /* "pseudo_multinomial/series/extrapolation.pyx":119
  *         if force_return:
  *             break
  *         if max_iter == 0 and ncols_used > rows.shape[1]:  # extend             # <<<<<<<<<<<<<<
@@ -4500,21 +4500,21 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     __pyx_L19_bool_binop_done:;
     if (__pyx_t_16) {
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":130
+      /* "pseudo_multinomial/series/extrapolation.pyx":120
  *             break
  *         if max_iter == 0 and ncols_used > rows.shape[1]:  # extend
  *             rows = np.pad(rows, ((0, 0), (0, extend_step)),             # <<<<<<<<<<<<<<
  *                           constant_values=math.NAN)
  *             eps = np.pad(eps, ((0, 0), (0, extend_step)),
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_pad); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_pad); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyInt_From_unsigned_int(__pyx_v_extend_step); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_From_unsigned_int(__pyx_v_extend_step); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
@@ -4522,7 +4522,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       __Pyx_GIVEREF(__pyx_t_7);
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_7);
       __pyx_t_7 = 0;
-      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_INCREF(__pyx_tuple__8);
       __Pyx_GIVEREF(__pyx_tuple__8);
@@ -4530,7 +4530,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(((PyObject *)__pyx_v_rows));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_rows));
@@ -4539,33 +4539,33 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":131
+      /* "pseudo_multinomial/series/extrapolation.pyx":121
  *         if max_iter == 0 and ncols_used > rows.shape[1]:  # extend
  *             rows = np.pad(rows, ((0, 0), (0, extend_step)),
  *                           constant_values=math.NAN)             # <<<<<<<<<<<<<<
  *             eps = np.pad(eps, ((0, 0), (0, extend_step)),
  *                          constant_values=math.NAN)
  */
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 121, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_3 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
+      __pyx_t_3 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 121, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_constant_values, __pyx_t_3) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_constant_values, __pyx_t_3) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":130
+      /* "pseudo_multinomial/series/extrapolation.pyx":120
  *             break
  *         if max_iter == 0 and ncols_used > rows.shape[1]:  # extend
  *             rows = np.pad(rows, ((0, 0), (0, extend_step)),             # <<<<<<<<<<<<<<
  *                           constant_values=math.NAN)
  *             eps = np.pad(eps, ((0, 0), (0, extend_step)),
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 130, __pyx_L1_error)
+      if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 120, __pyx_L1_error)
       __pyx_t_8 = ((PyArrayObject *)__pyx_t_3);
       {
         __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -4582,27 +4582,27 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
           __pyx_t_21 = __pyx_t_22 = __pyx_t_23 = 0;
         }
         __pyx_pybuffernd_rows.diminfo[0].strides = __pyx_pybuffernd_rows.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rows.diminfo[0].shape = __pyx_pybuffernd_rows.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_rows.diminfo[1].strides = __pyx_pybuffernd_rows.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_rows.diminfo[1].shape = __pyx_pybuffernd_rows.rcbuffer->pybuffer.shape[1];
-        if (unlikely(__pyx_t_20 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
+        if (unlikely(__pyx_t_20 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
       }
       __pyx_t_8 = 0;
       __Pyx_DECREF_SET(__pyx_v_rows, ((PyArrayObject *)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":132
+      /* "pseudo_multinomial/series/extrapolation.pyx":122
  *             rows = np.pad(rows, ((0, 0), (0, extend_step)),
  *                           constant_values=math.NAN)
  *             eps = np.pad(eps, ((0, 0), (0, extend_step)),             # <<<<<<<<<<<<<<
  *                          constant_values=math.NAN)
  *     return eps[:, :ncols_used // 2]
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_pad); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_pad); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_extend_step); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_extend_step); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
@@ -4610,7 +4610,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_tuple__8);
       __Pyx_GIVEREF(__pyx_tuple__8);
@@ -4618,7 +4618,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(((PyObject *)__pyx_v_eps));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_eps));
@@ -4627,33 +4627,33 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":133
+      /* "pseudo_multinomial/series/extrapolation.pyx":123
  *                           constant_values=math.NAN)
  *             eps = np.pad(eps, ((0, 0), (0, extend_step)),
  *                          constant_values=math.NAN)             # <<<<<<<<<<<<<<
  *     return eps[:, :ncols_used // 2]
  * 
  */
-      __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 133, __pyx_L1_error)
+      __pyx_t_6 = PyFloat_FromDouble(NAN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_constant_values, __pyx_t_6) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_constant_values, __pyx_t_6) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":132
+      /* "pseudo_multinomial/series/extrapolation.pyx":122
  *             rows = np.pad(rows, ((0, 0), (0, extend_step)),
  *                           constant_values=math.NAN)
  *             eps = np.pad(eps, ((0, 0), (0, extend_step)),             # <<<<<<<<<<<<<<
  *                          constant_values=math.NAN)
  *     return eps[:, :ncols_used // 2]
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 132, __pyx_L1_error)
+      if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 122, __pyx_L1_error)
       __pyx_t_9 = ((PyArrayObject *)__pyx_t_6);
       {
         __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -4670,13 +4670,13 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
           __pyx_t_23 = __pyx_t_22 = __pyx_t_21 = 0;
         }
         __pyx_pybuffernd_eps.diminfo[0].strides = __pyx_pybuffernd_eps.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_eps.diminfo[0].shape = __pyx_pybuffernd_eps.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_eps.diminfo[1].strides = __pyx_pybuffernd_eps.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_eps.diminfo[1].shape = __pyx_pybuffernd_eps.rcbuffer->pybuffer.shape[1];
-        if (unlikely(__pyx_t_20 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
+        if (unlikely(__pyx_t_20 < 0)) __PYX_ERR(0, 122, __pyx_L1_error)
       }
       __pyx_t_9 = 0;
       __Pyx_DECREF_SET(__pyx_v_eps, ((PyArrayObject *)__pyx_t_6));
       __pyx_t_6 = 0;
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":129
+      /* "pseudo_multinomial/series/extrapolation.pyx":119
  *         if force_return:
  *             break
  *         if max_iter == 0 and ncols_used > rows.shape[1]:  # extend             # <<<<<<<<<<<<<<
@@ -4687,7 +4687,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   }
   __pyx_L5_break:;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":134
+  /* "pseudo_multinomial/series/extrapolation.pyx":124
  *             eps = np.pad(eps, ((0, 0), (0, extend_step)),
  *                          constant_values=math.NAN)
  *     return eps[:, :ncols_used // 2]             # <<<<<<<<<<<<<<
@@ -4695,12 +4695,12 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  * # noinspection DuplicatedCode
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_ncols_used / 2)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_ncols_used / 2)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = PySlice_New(Py_None, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_3 = PySlice_New(Py_None, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_slice_);
   __Pyx_GIVEREF(__pyx_slice_);
@@ -4708,15 +4708,15 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_eps), __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_eps), __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 134, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 124, __pyx_L1_error)
   __pyx_r = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":44
+  /* "pseudo_multinomial/series/extrapolation.pyx":34
  * # --------------------------------
  * # noinspection DuplicatedCode
  * cdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps_kernel(             # <<<<<<<<<<<<<<
@@ -4754,7 +4754,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   return __pyx_r;
 }
 
-/* "pseudo_multinomial/series/extrapolation.pyx":138
+/* "pseudo_multinomial/series/extrapolation.pyx":128
  * # noinspection DuplicatedCode
  * @cython.binding(True)
  * def shanks(f: Callable[[int], float],             # <<<<<<<<<<<<<<
@@ -4787,7 +4787,7 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_1shanks(P
     PyObject* values[9] = {0,0,0,0,0,0,0,0,0};
     values[1] = ((PyObject *)((PyObject *)__pyx_int_0));
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":141
+    /* "pseudo_multinomial/series/extrapolation.pyx":131
  *            start: int = 0,
  *            start_val: float = 0,
  *            max_r: Optional[int] = None,             # <<<<<<<<<<<<<<
@@ -4799,7 +4799,7 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_1shanks(P
     values[6] = ((PyObject *)((PyObject *)__pyx_int_50));
     values[7] = ((PyObject*)((PyObject*)__pyx_n_u_ignore));
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":146
+    /* "pseudo_multinomial/series/extrapolation.pyx":136
  *            extend_step: int = 50,
  *            zero_div: str = 'ignore',
  *            return_table: bool = False):             # <<<<<<<<<<<<<<
@@ -4887,7 +4887,7 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_1shanks(P
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "shanks") < 0)) __PYX_ERR(0, 138, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "shanks") < 0)) __PYX_ERR(0, 128, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4915,13 +4915,13 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_1shanks(P
     __pyx_v_f = values[0];
     __pyx_v_start = values[1];
     if (values[2]) {
-      __pyx_v_start_val = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_start_val == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L3_error)
+      __pyx_v_start_val = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_start_val == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 130, __pyx_L3_error)
     } else {
       __pyx_v_start_val = ((double)((double)0.0));
     }
     __pyx_v_max_r = values[3];
     if (values[4]) {
-      __pyx_v_atol = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_atol == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
+      __pyx_v_atol = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_atol == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L3_error)
     } else {
       __pyx_v_atol = ((double)((double)1e-14));
     }
@@ -4932,16 +4932,16 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_1shanks(P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("shanks", 0, 1, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 138, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("shanks", 0, 1, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 128, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pseudo_multinomial.series.extrapolation.shanks", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_zero_div), (&PyUnicode_Type), 1, "zero_div", 1))) __PYX_ERR(0, 145, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_zero_div), (&PyUnicode_Type), 1, "zero_div", 1))) __PYX_ERR(0, 135, __pyx_L1_error)
   __pyx_r = __pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(__pyx_self, __pyx_v_f, __pyx_v_start, __pyx_v_start_val, __pyx_v_max_r, __pyx_v_atol, __pyx_v_max_iter, __pyx_v_extend_step, __pyx_v_zero_div, __pyx_v_return_table);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":138
+  /* "pseudo_multinomial/series/extrapolation.pyx":128
  * # noinspection DuplicatedCode
  * @cython.binding(True)
  * def shanks(f: Callable[[int], float],             # <<<<<<<<<<<<<<
@@ -4999,7 +4999,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __pyx_pybuffernd_table.data = NULL;
   __pyx_pybuffernd_table.rcbuffer = &__pyx_pybuffer_table;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":163
+  /* "pseudo_multinomial/series/extrapolation.pyx":153
  *     """
  *     # check args
  *     if max_r is None or max_r < 0:             # <<<<<<<<<<<<<<
@@ -5013,14 +5013,14 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_v_max_r, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_v_max_r, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_1 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":164
+    /* "pseudo_multinomial/series/extrapolation.pyx":154
  *     # check args
  *     if max_r is None or max_r < 0:
  *         max_r = 0             # <<<<<<<<<<<<<<
@@ -5030,7 +5030,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_DECREF_SET(__pyx_v_max_r, __pyx_int_0);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":163
+    /* "pseudo_multinomial/series/extrapolation.pyx":153
  *     """
  *     # check args
  *     if max_r is None or max_r < 0:             # <<<<<<<<<<<<<<
@@ -5039,7 +5039,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":165
+  /* "pseudo_multinomial/series/extrapolation.pyx":155
  *     if max_r is None or max_r < 0:
  *         max_r = 0
  *     if atol < 0:             # <<<<<<<<<<<<<<
@@ -5049,14 +5049,14 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __pyx_t_1 = ((__pyx_v_atol < 0.0) != 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":166
+    /* "pseudo_multinomial/series/extrapolation.pyx":156
  *         max_r = 0
  *     if atol < 0:
  *         raise ValueError('atol must be non-negative. '             # <<<<<<<<<<<<<<
  *                          f'Got {atol}.')
  *     if max_iter is None:
  */
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = 0;
     __pyx_t_6 = 127;
@@ -5065,16 +5065,16 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_GIVEREF(__pyx_kp_u_atol_must_be_non_negative_Got);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_kp_u_atol_must_be_non_negative_Got);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":167
+    /* "pseudo_multinomial/series/extrapolation.pyx":157
  *     if atol < 0:
  *         raise ValueError('atol must be non-negative. '
  *                          f'Got {atol}.')             # <<<<<<<<<<<<<<
  *     if max_iter is None:
  *         max_iter = 0
  */
-    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_atol); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_atol); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) : __pyx_t_6;
@@ -5087,24 +5087,24 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_GIVEREF(__pyx_kp_u__9);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_kp_u__9);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":166
+    /* "pseudo_multinomial/series/extrapolation.pyx":156
  *         max_r = 0
  *     if atol < 0:
  *         raise ValueError('atol must be non-negative. '             # <<<<<<<<<<<<<<
  *                          f'Got {atol}.')
  *     if max_iter is None:
  */
-    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_4, 3, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_4, 3, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 166, __pyx_L1_error)
+    __PYX_ERR(0, 156, __pyx_L1_error)
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":165
+    /* "pseudo_multinomial/series/extrapolation.pyx":155
  *     if max_r is None or max_r < 0:
  *         max_r = 0
  *     if atol < 0:             # <<<<<<<<<<<<<<
@@ -5113,7 +5113,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":168
+  /* "pseudo_multinomial/series/extrapolation.pyx":158
  *         raise ValueError('atol must be non-negative. '
  *                          f'Got {atol}.')
  *     if max_iter is None:             # <<<<<<<<<<<<<<
@@ -5124,7 +5124,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __pyx_t_3 = (__pyx_t_1 != 0);
   if (__pyx_t_3) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":169
+    /* "pseudo_multinomial/series/extrapolation.pyx":159
  *                          f'Got {atol}.')
  *     if max_iter is None:
  *         max_iter = 0             # <<<<<<<<<<<<<<
@@ -5134,7 +5134,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_DECREF_SET(__pyx_v_max_iter, __pyx_int_0);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":168
+    /* "pseudo_multinomial/series/extrapolation.pyx":158
  *         raise ValueError('atol must be non-negative. '
  *                          f'Got {atol}.')
  *     if max_iter is None:             # <<<<<<<<<<<<<<
@@ -5143,7 +5143,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":170
+  /* "pseudo_multinomial/series/extrapolation.pyx":160
  *     if max_iter is None:
  *         max_iter = 0
  *     if zero_div not in ['return', 'ignore', 'random']:             # <<<<<<<<<<<<<<
@@ -5152,21 +5152,21 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   __Pyx_INCREF(__pyx_v_zero_div);
   __pyx_t_9 = __pyx_v_zero_div;
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_9, __pyx_n_u_return, Py_NE)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_9, __pyx_n_u_return, Py_NE)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L9_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_9, __pyx_n_u_ignore, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_9, __pyx_n_u_ignore, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
   } else {
     __pyx_t_3 = __pyx_t_1;
     goto __pyx_L9_bool_binop_done;
   }
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_9, __pyx_n_u_random, Py_NE)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_9, __pyx_n_u_random, Py_NE)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   __pyx_t_3 = __pyx_t_2;
   __pyx_L9_bool_binop_done:;
@@ -5174,14 +5174,14 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":171
+    /* "pseudo_multinomial/series/extrapolation.pyx":161
  *         max_iter = 0
  *     if zero_div not in ['return', 'ignore', 'random']:
  *         raise ValueError('Supported zero_div strategies are '             # <<<<<<<<<<<<<<
  *                          '\'return\', \'ignore\', and \'random\'. '
  *                          f'Got {zero_div}.')
  */
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = 0;
     __pyx_t_6 = 127;
@@ -5190,14 +5190,14 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_GIVEREF(__pyx_kp_u_Supported_zero_div_strategies_ar);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_kp_u_Supported_zero_div_strategies_ar);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":173
+    /* "pseudo_multinomial/series/extrapolation.pyx":163
  *         raise ValueError('Supported zero_div strategies are '
  *                          '\'return\', \'ignore\', and \'random\'. '
  *                          f'Got {zero_div}.')             # <<<<<<<<<<<<<<
  *     zero_div_map = {
  *         'return': 0,
  */
-    __pyx_t_8 = __Pyx_PyUnicode_Unicode(__pyx_v_zero_div); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 173, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyUnicode_Unicode(__pyx_v_zero_div); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) : __pyx_t_6;
     __pyx_t_5 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_8);
@@ -5209,24 +5209,24 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_GIVEREF(__pyx_kp_u__9);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_kp_u__9);
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":171
+    /* "pseudo_multinomial/series/extrapolation.pyx":161
  *         max_iter = 0
  *     if zero_div not in ['return', 'ignore', 'random']:
  *         raise ValueError('Supported zero_div strategies are '             # <<<<<<<<<<<<<<
  *                          '\'return\', \'ignore\', and \'random\'. '
  *                          f'Got {zero_div}.')
  */
-    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_4, 3, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_4, 3, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 171, __pyx_L1_error)
+    __PYX_ERR(0, 161, __pyx_L1_error)
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":170
+    /* "pseudo_multinomial/series/extrapolation.pyx":160
  *     if max_iter is None:
  *         max_iter = 0
  *     if zero_div not in ['return', 'ignore', 'random']:             # <<<<<<<<<<<<<<
@@ -5235,50 +5235,50 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":175
+  /* "pseudo_multinomial/series/extrapolation.pyx":165
  *                          f'Got {zero_div}.')
  *     zero_div_map = {
  *         'return': 0,             # <<<<<<<<<<<<<<
  *         'ignore': 1,
  *         'random': 2,
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_u_return, __pyx_int_0) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_u_ignore, __pyx_int_1) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_u_random, __pyx_int_2) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_u_return, __pyx_int_0) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_u_ignore, __pyx_int_1) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_u_random, __pyx_int_2) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
   __pyx_v_zero_div_map = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":180
+  /* "pseudo_multinomial/series/extrapolation.pyx":170
  *     }
  * 
  *     f_wrapper = PyDoubleSeriesFPtr.from_f(f)             # <<<<<<<<<<<<<<
  *     cdef cnp.ndarray[cnp.float64_t, ndim=2] table = wynn_eps_kernel(
  *         f_wrapper, start, start_val, max_r, atol, max_iter, zero_div_map[zero_div], extend_step)
  */
-  __pyx_t_4 = ((PyObject *)__pyx_vtabptr_18pseudo_multinomial_6series_4fptr_PyDoubleSeriesFPtr->from_f(__pyx_v_f)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_4 = ((PyObject *)__pyx_vtabptr_18pseudo_multinomial_6series_4fptr_PyDoubleSeriesFPtr->from_f(__pyx_v_f)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_f_wrapper = ((struct __pyx_obj_18pseudo_multinomial_6series_4fptr_DoubleSeriesFPtr *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":182
+  /* "pseudo_multinomial/series/extrapolation.pyx":172
  *     f_wrapper = PyDoubleSeriesFPtr.from_f(f)
  *     cdef cnp.ndarray[cnp.float64_t, ndim=2] table = wynn_eps_kernel(
  *         f_wrapper, start, start_val, max_r, atol, max_iter, zero_div_map[zero_div], extend_step)             # <<<<<<<<<<<<<<
  * 
  *     if return_table:
  */
-  __pyx_t_10 = __Pyx_PyInt_As_long(__pyx_v_start); if (unlikely((__pyx_t_10 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
-  __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_v_max_r); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
-  __pyx_t_12 = __Pyx_PyInt_As_unsigned_int(__pyx_v_max_iter); if (unlikely((__pyx_t_12 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_zero_div_map, __pyx_v_zero_div); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_As_long(__pyx_v_start); if (unlikely((__pyx_t_10 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_v_max_r); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyInt_As_unsigned_int(__pyx_v_max_iter); if (unlikely((__pyx_t_12 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_zero_div_map, __pyx_v_zero_div); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_13 = __Pyx_PyInt_As_unsigned_int(__pyx_t_4); if (unlikely((__pyx_t_13 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_unsigned_int(__pyx_t_4); if (unlikely((__pyx_t_13 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_v_extend_step); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_v_extend_step); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":181
+  /* "pseudo_multinomial/series/extrapolation.pyx":171
  * 
  *     f_wrapper = PyDoubleSeriesFPtr.from_f(f)
  *     cdef cnp.ndarray[cnp.float64_t, ndim=2] table = wynn_eps_kernel(             # <<<<<<<<<<<<<<
@@ -5293,30 +5293,30 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __pyx_t_15.max_iter = __pyx_t_12;
   __pyx_t_15.extend_step = __pyx_t_13;
   __pyx_t_15.zero_div = __pyx_t_14;
-  __pyx_t_4 = ((PyObject *)__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_eps_kernel(__pyx_v_f_wrapper, &__pyx_t_15)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_4 = ((PyObject *)__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_eps_kernel(__pyx_v_f_wrapper, &__pyx_t_15)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_table.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_4), &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_table = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_table.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 181, __pyx_L1_error)
+      __PYX_ERR(0, 171, __pyx_L1_error)
     } else {__pyx_pybuffernd_table.diminfo[0].strides = __pyx_pybuffernd_table.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_table.diminfo[0].shape = __pyx_pybuffernd_table.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_table.diminfo[1].strides = __pyx_pybuffernd_table.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_table.diminfo[1].shape = __pyx_pybuffernd_table.rcbuffer->pybuffer.shape[1];
     }
   }
   __pyx_v_table = ((PyArrayObject *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":184
+  /* "pseudo_multinomial/series/extrapolation.pyx":174
  *         f_wrapper, start, start_val, max_r, atol, max_iter, zero_div_map[zero_div], extend_step)
  * 
  *     if return_table:             # <<<<<<<<<<<<<<
  *         return table
  *     eps, diffs, steps = table
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_return_table); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_return_table); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 174, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":185
+    /* "pseudo_multinomial/series/extrapolation.pyx":175
  * 
  *     if return_table:
  *         return table             # <<<<<<<<<<<<<<
@@ -5328,7 +5328,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __pyx_r = ((PyObject *)__pyx_v_table);
     goto __pyx_L0;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":184
+    /* "pseudo_multinomial/series/extrapolation.pyx":174
  *         f_wrapper, start, start_val, max_r, atol, max_iter, zero_div_map[zero_div], extend_step)
  * 
  *     if return_table:             # <<<<<<<<<<<<<<
@@ -5337,7 +5337,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":186
+  /* "pseudo_multinomial/series/extrapolation.pyx":176
  *     if return_table:
  *         return table
  *     eps, diffs, steps = table             # <<<<<<<<<<<<<<
@@ -5350,7 +5350,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 186, __pyx_L1_error)
+      __PYX_ERR(0, 176, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -5366,16 +5366,16 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_INCREF(__pyx_t_8);
     __Pyx_INCREF(__pyx_t_7);
     #else
-    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     #endif
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_16 = PyObject_GetIter(((PyObject *)__pyx_v_table)); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_16 = PyObject_GetIter(((PyObject *)__pyx_v_table)); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __pyx_t_17 = Py_TYPE(__pyx_t_16)->tp_iternext;
     index = 0; __pyx_t_4 = __pyx_t_17(__pyx_t_16); if (unlikely(!__pyx_t_4)) goto __pyx_L13_unpacking_failed;
@@ -5384,7 +5384,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_GOTREF(__pyx_t_8);
     index = 2; __pyx_t_7 = __pyx_t_17(__pyx_t_16); if (unlikely(!__pyx_t_7)) goto __pyx_L13_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_16), 3) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_16), 3) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
     __pyx_t_17 = NULL;
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     goto __pyx_L14_unpacking_done;
@@ -5392,7 +5392,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __pyx_t_17 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 186, __pyx_L1_error)
+    __PYX_ERR(0, 176, __pyx_L1_error)
     __pyx_L14_unpacking_done:;
   }
   __pyx_v_eps = __pyx_t_4;
@@ -5402,21 +5402,21 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __pyx_v_steps = __pyx_t_7;
   __pyx_t_7 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":187
+  /* "pseudo_multinomial/series/extrapolation.pyx":177
  *         return table
  *     eps, diffs, steps = table
  *     if not math.isfinite(eps[0]):  # diverged             # <<<<<<<<<<<<<<
  *         return eps[0]
  *     elif diffs[0] == 0:  # converged
  */
-  __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_eps, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_eps, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_7); if (unlikely((__pyx_t_18 == (long double)-1) && PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_7); if (unlikely((__pyx_t_18 == (long double)-1) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_2 = ((!(isfinite(__pyx_t_18) != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":188
+    /* "pseudo_multinomial/series/extrapolation.pyx":178
  *     eps, diffs, steps = table
  *     if not math.isfinite(eps[0]):  # diverged
  *         return eps[0]             # <<<<<<<<<<<<<<
@@ -5424,13 +5424,13 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  *         return eps[0]
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_eps, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 188, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_eps, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_r = __pyx_t_7;
     __pyx_t_7 = 0;
     goto __pyx_L0;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":187
+    /* "pseudo_multinomial/series/extrapolation.pyx":177
  *         return table
  *     eps, diffs, steps = table
  *     if not math.isfinite(eps[0]):  # diverged             # <<<<<<<<<<<<<<
@@ -5439,23 +5439,23 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":189
+  /* "pseudo_multinomial/series/extrapolation.pyx":179
  *     if not math.isfinite(eps[0]):  # diverged
  *         return eps[0]
  *     elif diffs[0] == 0:  # converged             # <<<<<<<<<<<<<<
  *         return eps[0]
  *     elif np.all(steps[-1] >= steps[:-1]):  # highest order shanks
  */
-  __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_diffs, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_diffs, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyInt_EqObjC(__pyx_t_7, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_EqObjC(__pyx_t_7, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   if (__pyx_t_2) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":190
+    /* "pseudo_multinomial/series/extrapolation.pyx":180
  *         return eps[0]
  *     elif diffs[0] == 0:  # converged
  *         return eps[0]             # <<<<<<<<<<<<<<
@@ -5463,13 +5463,13 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  *         return eps[-1]
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_eps, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_eps, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 180, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_r = __pyx_t_8;
     __pyx_t_8 = 0;
     goto __pyx_L0;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":189
+    /* "pseudo_multinomial/series/extrapolation.pyx":179
  *     if not math.isfinite(eps[0]):  # diverged
  *         return eps[0]
  *     elif diffs[0] == 0:  # converged             # <<<<<<<<<<<<<<
@@ -5478,23 +5478,23 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":191
+  /* "pseudo_multinomial/series/extrapolation.pyx":181
  *     elif diffs[0] == 0:  # converged
  *         return eps[0]
  *     elif np.all(steps[-1] >= steps[:-1]):  # highest order shanks             # <<<<<<<<<<<<<<
  *         return eps[-1]
  *     # otherwise, return the column with the least change
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_all); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_all); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_steps, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_steps, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_16 = __Pyx_PyObject_GetSlice(__pyx_v_steps, 0, -1L, NULL, NULL, &__pyx_slice__10, 0, 1, 1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_GetSlice(__pyx_v_steps, 0, -1L, NULL, NULL, &__pyx_slice__10, 0, 1, 1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
-  __pyx_t_19 = PyObject_RichCompare(__pyx_t_7, __pyx_t_16, Py_GE); __Pyx_XGOTREF(__pyx_t_19); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_19 = PyObject_RichCompare(__pyx_t_7, __pyx_t_16, Py_GE); __Pyx_XGOTREF(__pyx_t_19); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
   __pyx_t_16 = NULL;
@@ -5510,14 +5510,14 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __pyx_t_8 = (__pyx_t_16) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_16, __pyx_t_19) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_19);
   __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
   __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 191, __pyx_L1_error)
+  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   if (__pyx_t_2) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":192
+    /* "pseudo_multinomial/series/extrapolation.pyx":182
  *         return eps[0]
  *     elif np.all(steps[-1] >= steps[:-1]):  # highest order shanks
  *         return eps[-1]             # <<<<<<<<<<<<<<
@@ -5525,13 +5525,13 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  *     diffs = np.nan_to_num(diffs, nan=np.inf)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_eps, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 192, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_eps, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 182, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_r = __pyx_t_8;
     __pyx_t_8 = 0;
     goto __pyx_L0;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":191
+    /* "pseudo_multinomial/series/extrapolation.pyx":181
  *     elif diffs[0] == 0:  # converged
  *         return eps[0]
  *     elif np.all(steps[-1] >= steps[:-1]):  # highest order shanks             # <<<<<<<<<<<<<<
@@ -5540,33 +5540,33 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  */
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":194
+  /* "pseudo_multinomial/series/extrapolation.pyx":184
  *         return eps[-1]
  *     # otherwise, return the column with the least change
  *     diffs = np.nan_to_num(diffs, nan=np.inf)             # <<<<<<<<<<<<<<
  *     diffs[0] = np.inf
  *     return eps[np.argmin(np.abs(diffs))]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_nan_to_num); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_nan_to_num); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_INCREF(__pyx_v_diffs);
   __Pyx_GIVEREF(__pyx_v_diffs);
   PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_v_diffs);
-  __pyx_t_19 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_19 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_19);
-  __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_np); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_np); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_inf); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_inf); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-  if (PyDict_SetItem(__pyx_t_19, __pyx_n_s_nan, __pyx_t_7) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_19, __pyx_n_s_nan, __pyx_t_7) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, __pyx_t_19); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, __pyx_t_19); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -5574,22 +5574,22 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __Pyx_DECREF_SET(__pyx_v_diffs, __pyx_t_7);
   __pyx_t_7 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":195
+  /* "pseudo_multinomial/series/extrapolation.pyx":185
  *     # otherwise, return the column with the least change
  *     diffs = np.nan_to_num(diffs, nan=np.inf)
  *     diffs[0] = np.inf             # <<<<<<<<<<<<<<
  *     return eps[np.argmin(np.abs(diffs))]
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_19 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_inf); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_19 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_inf); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_19);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(__Pyx_SetItemInt(__pyx_v_diffs, 0, __pyx_t_19, long, 1, __Pyx_PyInt_From_long, 0, 0, 0) < 0)) __PYX_ERR(0, 195, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(__pyx_v_diffs, 0, __pyx_t_19, long, 1, __Pyx_PyInt_From_long, 0, 0, 0) < 0)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":196
+  /* "pseudo_multinomial/series/extrapolation.pyx":186
  *     diffs = np.nan_to_num(diffs, nan=np.inf)
  *     diffs[0] = np.inf
  *     return eps[np.argmin(np.abs(diffs))]             # <<<<<<<<<<<<<<
@@ -5597,14 +5597,14 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
  * @cython.binding(True)
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_argmin); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_argmin); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_abs); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_abs); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -5619,7 +5619,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   }
   __pyx_t_7 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_16, __pyx_t_4, __pyx_v_diffs) : __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_v_diffs);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
   __pyx_t_16 = NULL;
@@ -5635,17 +5635,17 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   __pyx_t_19 = (__pyx_t_16) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_16, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7);
   __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_19);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_eps, __pyx_t_19); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_eps, __pyx_t_19); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
   __pyx_r = __pyx_t_8;
   __pyx_t_8 = 0;
   goto __pyx_L0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":138
+  /* "pseudo_multinomial/series/extrapolation.pyx":128
  * # noinspection DuplicatedCode
  * @cython.binding(True)
  * def shanks(f: Callable[[int], float],             # <<<<<<<<<<<<<<
@@ -5686,7 +5686,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
   return __pyx_r;
 }
 
-/* "pseudo_multinomial/series/extrapolation.pyx":199
+/* "pseudo_multinomial/series/extrapolation.pyx":189
  * 
  * @cython.binding(True)
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],             # <<<<<<<<<<<<<<
@@ -5697,7 +5697,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_shanks(CY
 static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_3wynn_eps(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_eps(__Pyx_memviewslice __pyx_v_sn, CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_18pseudo_multinomial_6series_13extrapolation_wynn_eps *__pyx_optional_args) {
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":200
+  /* "pseudo_multinomial/series/extrapolation.pyx":190
  * @cython.binding(True)
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],
  *                                                   r: int = None,             # <<<<<<<<<<<<<<
@@ -5706,7 +5706,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  */
   PyObject *__pyx_v_r = ((PyObject *)Py_None);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":201
+  /* "pseudo_multinomial/series/extrapolation.pyx":191
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],
  *                                                   r: int = None,
  *                                                   randomized: bint = False):             # <<<<<<<<<<<<<<
@@ -5755,7 +5755,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   }
   __Pyx_INCREF(__pyx_v_r);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":203
+  /* "pseudo_multinomial/series/extrapolation.pyx":193
  *                                                   randomized: bint = False):
  *     """Perform Wynn Epsilon Convergence Algorithm"""
  *     if r is None:             # <<<<<<<<<<<<<<
@@ -5766,19 +5766,19 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":204
+    /* "pseudo_multinomial/series/extrapolation.pyx":194
  *     """Perform Wynn Epsilon Convergence Algorithm"""
  *     if r is None:
  *         r = (sn.shape[0] - 1) // 2             # <<<<<<<<<<<<<<
  *     else:
  *         r = min(r, (sn.shape[0] - 1) // 2)
  */
-    __pyx_t_3 = PyInt_FromSsize_t((((__pyx_v_sn.shape[0]) - 1) / 2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_3 = PyInt_FromSsize_t((((__pyx_v_sn.shape[0]) - 1) / 2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_r, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":203
+    /* "pseudo_multinomial/series/extrapolation.pyx":193
  *                                                   randomized: bint = False):
  *     """Perform Wynn Epsilon Convergence Algorithm"""
  *     if r is None:             # <<<<<<<<<<<<<<
@@ -5788,7 +5788,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
     goto __pyx_L3;
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":206
+  /* "pseudo_multinomial/series/extrapolation.pyx":196
  *         r = (sn.shape[0] - 1) // 2
  *     else:
  *         r = min(r, (sn.shape[0] - 1) // 2)             # <<<<<<<<<<<<<<
@@ -5796,49 +5796,49 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
  * 
  */
   /*else*/ {
-    __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_v_r); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 206, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_f_18pseudo_multinomial_6series_13extrapolation_min(__pyx_t_4, (((__pyx_v_sn.shape[0]) - 1) / 2))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_v_r); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_f_18pseudo_multinomial_6series_13extrapolation_min(__pyx_t_4, (((__pyx_v_sn.shape[0]) - 1) / 2))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_r, __pyx_t_3);
     __pyx_t_3 = 0;
   }
   __pyx_L3:;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":207
+  /* "pseudo_multinomial/series/extrapolation.pyx":197
  *     else:
  *         r = min(r, (sn.shape[0] - 1) // 2)
  *     cdef long n = 2 * r + 1             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_t_3 = PyNumber_Multiply(__pyx_int_2, __pyx_v_r); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_int_2, __pyx_v_r); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_6 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_6 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_n = __pyx_t_6;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":210
+  /* "pseudo_multinomial/series/extrapolation.pyx":200
  * 
  *     cdef:
  *         double[:, :] e = np.empty(shape=(sn.shape[0], n))             # <<<<<<<<<<<<<<
  *         long i, j
  *         double denom
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = PyInt_FromSsize_t((__pyx_v_sn.shape[0])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_7 = PyInt_FromSsize_t((__pyx_v_sn.shape[0])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_n); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_n); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7);
@@ -5846,19 +5846,19 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
   PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_8);
   __pyx_t_7 = 0;
   __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_shape, __pyx_t_9) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_shape, __pyx_t_9) < 0) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_e = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":214
+  /* "pseudo_multinomial/series/extrapolation.pyx":204
  *         double denom
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -5873,7 +5873,7 @@ static PyArrayObject *__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_
       #endif
       /*try:*/ {
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":215
+        /* "pseudo_multinomial/series/extrapolation.pyx":205
  * 
  *     with nogil:
  *         e[:, 0] = sn[:]             # <<<<<<<<<<<<<<
@@ -5896,12 +5896,12 @@ __pyx_t_11.strides[0] = __pyx_v_e.strides[0];
         __pyx_t_11.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
 
-if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_sn, __pyx_t_11, 1, 1, 0) < 0)) __PYX_ERR(0, 215, __pyx_L5_error)
+if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_sn, __pyx_t_11, 1, 1, 0) < 0)) __PYX_ERR(0, 205, __pyx_L5_error)
         __PYX_XDEC_MEMVIEW(&__pyx_t_11, 0);
         __pyx_t_11.memview = NULL;
         __pyx_t_11.data = NULL;
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":216
+        /* "pseudo_multinomial/series/extrapolation.pyx":206
  *     with nogil:
  *         e[:, 0] = sn[:]
  *         e[:, 1:] = math.NAN             # <<<<<<<<<<<<<<
@@ -5930,7 +5930,7 @@ __pyx_t_12 = -1;
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 216, __pyx_L5_error)
+    __PYX_ERR(0, 206, __pyx_L5_error)
 }
 
 {
@@ -5959,7 +5959,7 @@ __pyx_t_12 = -1;
         __pyx_t_10.memview = NULL;
         __pyx_t_10.data = NULL;
 
-        /* "pseudo_multinomial/series/extrapolation.pyx":217
+        /* "pseudo_multinomial/series/extrapolation.pyx":207
  *         e[:, 0] = sn[:]
  *         e[:, 1:] = math.NAN
  *         for i in range(1, sn.shape[0]):  # i = n             # <<<<<<<<<<<<<<
@@ -5971,7 +5971,7 @@ __pyx_t_12 = -1;
         for (__pyx_t_6 = 1; __pyx_t_6 < __pyx_t_14; __pyx_t_6+=1) {
           __pyx_v_i = __pyx_t_6;
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":218
+          /* "pseudo_multinomial/series/extrapolation.pyx":208
  *         e[:, 1:] = math.NAN
  *         for i in range(1, sn.shape[0]):  # i = n
  *             denom = e[i, 0] - e[i - 1, 0]             # <<<<<<<<<<<<<<
@@ -5988,7 +5988,7 @@ __pyx_t_12 = -1;
           if (__pyx_t_18 < 0) __pyx_t_18 += __pyx_v_e.shape[1];
           __pyx_v_denom = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_e.data + __pyx_t_15 * __pyx_v_e.strides[0]) ) + __pyx_t_16 * __pyx_v_e.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_e.data + __pyx_t_17 * __pyx_v_e.strides[0]) ) + __pyx_t_18 * __pyx_v_e.strides[1]) ))));
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":219
+          /* "pseudo_multinomial/series/extrapolation.pyx":209
  *         for i in range(1, sn.shape[0]):  # i = n
  *             denom = e[i, 0] - e[i - 1, 0]
  *             if denom == 0:             # <<<<<<<<<<<<<<
@@ -5998,7 +5998,7 @@ __pyx_t_12 = -1;
           __pyx_t_2 = ((__pyx_v_denom == 0.0) != 0);
           if (__pyx_t_2) {
 
-            /* "pseudo_multinomial/series/extrapolation.pyx":220
+            /* "pseudo_multinomial/series/extrapolation.pyx":210
  *             denom = e[i, 0] - e[i - 1, 0]
  *             if denom == 0:
  *                 break             # <<<<<<<<<<<<<<
@@ -6007,7 +6007,7 @@ __pyx_t_12 = -1;
  */
             goto __pyx_L8_break;
 
-            /* "pseudo_multinomial/series/extrapolation.pyx":219
+            /* "pseudo_multinomial/series/extrapolation.pyx":209
  *         for i in range(1, sn.shape[0]):  # i = n
  *             denom = e[i, 0] - e[i - 1, 0]
  *             if denom == 0:             # <<<<<<<<<<<<<<
@@ -6016,7 +6016,7 @@ __pyx_t_12 = -1;
  */
           }
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":221
+          /* "pseudo_multinomial/series/extrapolation.pyx":211
  *             if denom == 0:
  *                 break
  *             e[i, 1] = 1 / denom  # first dummy column             # <<<<<<<<<<<<<<
@@ -6029,7 +6029,7 @@ __pyx_t_12 = -1;
           if (__pyx_t_17 < 0) __pyx_t_17 += __pyx_v_e.shape[1];
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_e.data + __pyx_t_18 * __pyx_v_e.strides[0]) ) + __pyx_t_17 * __pyx_v_e.strides[1]) )) = (1.0 / __pyx_v_denom);
 
-          /* "pseudo_multinomial/series/extrapolation.pyx":223
+          /* "pseudo_multinomial/series/extrapolation.pyx":213
  *             e[i, 1] = 1 / denom  # first dummy column
  * 
  *             for j in range(2, min(i + 2, n)):  # j = r + 1             # <<<<<<<<<<<<<<
@@ -6041,7 +6041,7 @@ __pyx_t_12 = -1;
           for (__pyx_t_20 = 2; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
             __pyx_v_j = __pyx_t_20;
 
-            /* "pseudo_multinomial/series/extrapolation.pyx":224
+            /* "pseudo_multinomial/series/extrapolation.pyx":214
  * 
  *             for j in range(2, min(i + 2, n)):  # j = r + 1
  *                 denom = e[i, j - 1] - e[i - 1, j - 1]             # <<<<<<<<<<<<<<
@@ -6058,7 +6058,7 @@ __pyx_t_12 = -1;
             if (__pyx_t_15 < 0) __pyx_t_15 += __pyx_v_e.shape[1];
             __pyx_v_denom = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_e.data + __pyx_t_17 * __pyx_v_e.strides[0]) ) + __pyx_t_18 * __pyx_v_e.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_e.data + __pyx_t_16 * __pyx_v_e.strides[0]) ) + __pyx_t_15 * __pyx_v_e.strides[1]) ))));
 
-            /* "pseudo_multinomial/series/extrapolation.pyx":225
+            /* "pseudo_multinomial/series/extrapolation.pyx":215
  *             for j in range(2, min(i + 2, n)):  # j = r + 1
  *                 denom = e[i, j - 1] - e[i - 1, j - 1]
  *                 if denom == 0:             # <<<<<<<<<<<<<<
@@ -6068,7 +6068,7 @@ __pyx_t_12 = -1;
             __pyx_t_2 = ((__pyx_v_denom == 0.0) != 0);
             if (__pyx_t_2) {
 
-              /* "pseudo_multinomial/series/extrapolation.pyx":226
+              /* "pseudo_multinomial/series/extrapolation.pyx":216
  *                 denom = e[i, j - 1] - e[i - 1, j - 1]
  *                 if denom == 0:
  *                     if randomized:             # <<<<<<<<<<<<<<
@@ -6078,7 +6078,7 @@ __pyx_t_12 = -1;
               __pyx_t_2 = (__pyx_v_randomized != 0);
               if (__pyx_t_2) {
 
-                /* "pseudo_multinomial/series/extrapolation.pyx":227
+                /* "pseudo_multinomial/series/extrapolation.pyx":217
  *                 if denom == 0:
  *                     if randomized:
  *                         denom = (<double> get_10_rand_bits() + 1) * MACHINE_EPS             # <<<<<<<<<<<<<<
@@ -6087,7 +6087,7 @@ __pyx_t_12 = -1;
  */
                 __pyx_v_denom = ((((double)get_10_rand_bits()) + 1.0) * __pyx_v_18pseudo_multinomial_6series_13extrapolation_MACHINE_EPS);
 
-                /* "pseudo_multinomial/series/extrapolation.pyx":226
+                /* "pseudo_multinomial/series/extrapolation.pyx":216
  *                 denom = e[i, j - 1] - e[i - 1, j - 1]
  *                 if denom == 0:
  *                     if randomized:             # <<<<<<<<<<<<<<
@@ -6097,7 +6097,7 @@ __pyx_t_12 = -1;
                 goto __pyx_L13;
               }
 
-              /* "pseudo_multinomial/series/extrapolation.pyx":229
+              /* "pseudo_multinomial/series/extrapolation.pyx":219
  *                         denom = (<double> get_10_rand_bits() + 1) * MACHINE_EPS
  *                     else:
  *                         break             # <<<<<<<<<<<<<<
@@ -6109,7 +6109,7 @@ __pyx_t_12 = -1;
               }
               __pyx_L13:;
 
-              /* "pseudo_multinomial/series/extrapolation.pyx":225
+              /* "pseudo_multinomial/series/extrapolation.pyx":215
  *             for j in range(2, min(i + 2, n)):  # j = r + 1
  *                 denom = e[i, j - 1] - e[i - 1, j - 1]
  *                 if denom == 0:             # <<<<<<<<<<<<<<
@@ -6118,7 +6118,7 @@ __pyx_t_12 = -1;
  */
             }
 
-            /* "pseudo_multinomial/series/extrapolation.pyx":230
+            /* "pseudo_multinomial/series/extrapolation.pyx":220
  *                     else:
  *                         break
  *                 if math.isnan(denom):             # <<<<<<<<<<<<<<
@@ -6128,7 +6128,7 @@ __pyx_t_12 = -1;
             __pyx_t_2 = (isnan(__pyx_v_denom) != 0);
             if (__pyx_t_2) {
 
-              /* "pseudo_multinomial/series/extrapolation.pyx":231
+              /* "pseudo_multinomial/series/extrapolation.pyx":221
  *                         break
  *                 if math.isnan(denom):
  *                     break             # <<<<<<<<<<<<<<
@@ -6137,7 +6137,7 @@ __pyx_t_12 = -1;
  */
               goto __pyx_L11_break;
 
-              /* "pseudo_multinomial/series/extrapolation.pyx":230
+              /* "pseudo_multinomial/series/extrapolation.pyx":220
  *                     else:
  *                         break
  *                 if math.isnan(denom):             # <<<<<<<<<<<<<<
@@ -6146,7 +6146,7 @@ __pyx_t_12 = -1;
  */
             }
 
-            /* "pseudo_multinomial/series/extrapolation.pyx":232
+            /* "pseudo_multinomial/series/extrapolation.pyx":222
  *                 if math.isnan(denom):
  *                     break
  *                 e[i, j] = e[i - 1, j - 2] + 1 / denom             # <<<<<<<<<<<<<<
@@ -6167,7 +6167,7 @@ __pyx_t_12 = -1;
         __pyx_L8_break:;
       }
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":214
+      /* "pseudo_multinomial/series/extrapolation.pyx":204
  *         double denom
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -6193,15 +6193,15 @@ __pyx_t_12 = -1;
       }
   }
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":233
+  /* "pseudo_multinomial/series/extrapolation.pyx":223
  *                     break
  *                 e[i, j] = e[i - 1, j - 2] + 1 / denom
  *     return np.asarray(e[:, ::2])             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_10.data = __pyx_v_e.data;
@@ -6226,10 +6226,10 @@ __pyx_t_12 = -1;
     1,
     1) < 0))
 {
-    __PYX_ERR(0, 233, __pyx_L1_error)
+    __PYX_ERR(0, 223, __pyx_L1_error)
 }
 
-__pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
+__pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
   __pyx_t_10.memview = NULL;
@@ -6247,15 +6247,15 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 2, (PyObject *(*)(char *)) __
   __pyx_t_9 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_8, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 233, __pyx_L1_error)
+  if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_9) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_9, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 233, __pyx_L1_error)
+  if (!(likely(((__pyx_t_9) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_9, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 223, __pyx_L1_error)
   __pyx_r = ((PyArrayObject *)__pyx_t_9);
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":199
+  /* "pseudo_multinomial/series/extrapolation.pyx":189
  * 
  * @cython.binding(True)
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],             # <<<<<<<<<<<<<<
@@ -6300,7 +6300,7 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_3wynn_eps
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_sn,&__pyx_n_s_r,&__pyx_n_s_randomized,0};
     PyObject* values[3] = {0,0,0};
 
-    /* "pseudo_multinomial/series/extrapolation.pyx":200
+    /* "pseudo_multinomial/series/extrapolation.pyx":190
  * @cython.binding(True)
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],
  *                                                   r: int = None,             # <<<<<<<<<<<<<<
@@ -6340,7 +6340,7 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_3wynn_eps
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "wynn_eps") < 0)) __PYX_ERR(0, 199, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "wynn_eps") < 0)) __PYX_ERR(0, 189, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6353,13 +6353,13 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_3wynn_eps
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_sn = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_sn.memview)) __PYX_ERR(0, 199, __pyx_L3_error)
+    __pyx_v_sn = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_sn.memview)) __PYX_ERR(0, 189, __pyx_L3_error)
     __pyx_v_r = values[1];
     if (values[2]) {
-      __pyx_v_randomized = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_randomized == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
+      __pyx_v_randomized = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_randomized == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L3_error)
     } else {
 
-      /* "pseudo_multinomial/series/extrapolation.pyx":201
+      /* "pseudo_multinomial/series/extrapolation.pyx":191
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],
  *                                                   r: int = None,
  *                                                   randomized: bint = False):             # <<<<<<<<<<<<<<
@@ -6371,7 +6371,7 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_3wynn_eps
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wynn_eps", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 199, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wynn_eps", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 189, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pseudo_multinomial.series.extrapolation.wynn_eps", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6379,7 +6379,7 @@ static PyObject *__pyx_pw_18pseudo_multinomial_6series_13extrapolation_3wynn_eps
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_pf_18pseudo_multinomial_6series_13extrapolation_2wynn_eps(__pyx_self, __pyx_v_sn, __pyx_v_r, __pyx_v_randomized);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":199
+  /* "pseudo_multinomial/series/extrapolation.pyx":189
  * 
  * @cython.binding(True)
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],             # <<<<<<<<<<<<<<
@@ -6405,7 +6405,7 @@ static PyObject *__pyx_pf_18pseudo_multinomial_6series_13extrapolation_2wynn_eps
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.r = __pyx_v_r;
   __pyx_t_2.randomized = __pyx_v_randomized;
-  __pyx_t_1 = ((PyObject *)__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_eps(__pyx_v_sn, 0, &__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_18pseudo_multinomial_6series_13extrapolation_wynn_eps(__pyx_v_sn, 0, &__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -22054,8 +22054,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 166, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 207, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 944, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 109, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(3, 152, __pyx_L1_error)
@@ -22072,70 +22072,70 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":70
+  /* "pseudo_multinomial/series/extrapolation.pyx":60
  *     eps[2, 0] = 1
  *     if math.fabs(term) <= atol:
  *         return eps[:, :1]             # <<<<<<<<<<<<<<
  * 
  *     eps[:, 1:] = math.NAN
  */
-  __pyx_slice_ = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_slice_ = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice_);
   __Pyx_GIVEREF(__pyx_slice_);
-  __pyx_slice__2 = PySlice_New(Py_None, __pyx_int_1, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_slice__2 = PySlice_New(Py_None, __pyx_int_1, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__2);
   __Pyx_GIVEREF(__pyx_slice__2);
-  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_slice_, __pyx_slice__2); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_slice_, __pyx_slice__2); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":72
+  /* "pseudo_multinomial/series/extrapolation.pyx":62
  *         return eps[:, :1]
  * 
  *     eps[:, 1:] = math.NAN             # <<<<<<<<<<<<<<
  *     rows[0, 0] = rows[1, 0]
  *     rows[0, 1] = 1 / term
  */
-  __pyx_slice__4 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_slice__4 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
-  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_slice_, __pyx_slice__4); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_slice_, __pyx_slice__4); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":75
+  /* "pseudo_multinomial/series/extrapolation.pyx":65
  *     rows[0, 0] = rows[1, 0]
  *     rows[0, 1] = 1 / term
  *     rows[:, 2:] = math.NAN             # <<<<<<<<<<<<<<
  * 
  *     cdef:
  */
-  __pyx_slice__6 = PySlice_New(__pyx_int_2, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_slice__6 = PySlice_New(__pyx_int_2, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
-  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_slice_, __pyx_slice__6); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_slice_, __pyx_slice__6); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":130
+  /* "pseudo_multinomial/series/extrapolation.pyx":120
  *             break
  *         if max_iter == 0 and ncols_used > rows.shape[1]:  # extend
  *             rows = np.pad(rows, ((0, 0), (0, extend_step)),             # <<<<<<<<<<<<<<
  *                           constant_values=math.NAN)
  *             eps = np.pad(eps, ((0, 0), (0, extend_step)),
  */
-  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":191
+  /* "pseudo_multinomial/series/extrapolation.pyx":181
  *     elif diffs[0] == 0:  # converged
  *         return eps[0]
  *     elif np.all(steps[-1] >= steps[:-1]):  # highest order shanks             # <<<<<<<<<<<<<<
  *         return eps[-1]
  *     # otherwise, return the column with the least change
  */
-  __pyx_slice__10 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__10)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_slice__10 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__10)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__10);
   __Pyx_GIVEREF(__pyx_slice__10);
 
@@ -22345,29 +22345,29 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":138
+  /* "pseudo_multinomial/series/extrapolation.pyx":128
  * # noinspection DuplicatedCode
  * @cython.binding(True)
  * def shanks(f: Callable[[int], float],             # <<<<<<<<<<<<<<
  *            start: int = 0,
  *            start_val: float = 0,
  */
-  __pyx_tuple__31 = PyTuple_Pack(15, __pyx_n_s_f, __pyx_n_s_start, __pyx_n_s_start_val, __pyx_n_s_max_r, __pyx_n_s_atol, __pyx_n_s_max_iter, __pyx_n_s_extend_step, __pyx_n_s_zero_div, __pyx_n_s_return_table, __pyx_n_s_zero_div_map, __pyx_n_s_f_wrapper, __pyx_n_s_table, __pyx_n_s_eps, __pyx_n_s_diffs, __pyx_n_s_steps); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(15, __pyx_n_s_f, __pyx_n_s_start, __pyx_n_s_start_val, __pyx_n_s_max_r, __pyx_n_s_atol, __pyx_n_s_max_iter, __pyx_n_s_extend_step, __pyx_n_s_zero_div, __pyx_n_s_return_table, __pyx_n_s_zero_div_map, __pyx_n_s_f_wrapper, __pyx_n_s_table, __pyx_n_s_eps, __pyx_n_s_diffs, __pyx_n_s_steps); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(9, 0, 15, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pseudo_multinomial_series_extrap, __pyx_n_s_shanks, 138, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(9, 0, 15, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pseudo_multinomial_series_extrap, __pyx_n_s_shanks, 128, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 128, __pyx_L1_error)
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":199
+  /* "pseudo_multinomial/series/extrapolation.pyx":189
  * 
  * @cython.binding(True)
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],             # <<<<<<<<<<<<<<
  *                                                   r: int = None,
  *                                                   randomized: bint = False):
  */
-  __pyx_tuple__33 = PyTuple_Pack(3, __pyx_n_s_sn, __pyx_n_s_r, __pyx_n_s_randomized); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(3, __pyx_n_s_sn, __pyx_n_s_r, __pyx_n_s_randomized); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pseudo_multinomial_series_extrap, __pyx_n_s_wynn_eps, 199, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pseudo_multinomial_series_extrap, __pyx_n_s_wynn_eps, 189, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 189, __pyx_L1_error)
 
   /* "View.MemoryView":287
  *         return self.name
@@ -22932,77 +22932,77 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":28
- * #     cdef unsigned long get_10_rand_bits() nogil
+  /* "pseudo_multinomial/series/extrapolation.pyx":18
+ * from ..utils.random_utils cimport mt19937, seed_mt19937, get_10_rand_bits
  * 
  * __all__ = [             # <<<<<<<<<<<<<<
  *     'shanks',
  * ]
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_u_shanks);
   __Pyx_GIVEREF(__pyx_n_u_shanks);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u_shanks);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all_2, __pyx_t_2) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all_2, __pyx_t_2) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":32
+  /* "pseudo_multinomial/series/extrapolation.pyx":22
  * ]
  * 
  * cdef double MACHINE_EPS = <double> np.finfo(np.float64).eps             # <<<<<<<<<<<<<<
  * 
  * cdef inline unsigned int min(unsigned int a, unsigned int b) nogil:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_finfo); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_finfo); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_eps); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_eps); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_18pseudo_multinomial_6series_13extrapolation_MACHINE_EPS = ((double)__pyx_t_4);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":140
+  /* "pseudo_multinomial/series/extrapolation.pyx":130
  * def shanks(f: Callable[[int], float],
  *            start: int = 0,
  *            start_val: float = 0,             # <<<<<<<<<<<<<<
  *            max_r: Optional[int] = None,
  *            atol: float = 1e-14,
  */
-  __pyx_t_3 = PyFloat_FromDouble(((double)0.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(((double)0.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":142
+  /* "pseudo_multinomial/series/extrapolation.pyx":132
  *            start_val: float = 0,
  *            max_r: Optional[int] = None,
  *            atol: float = 1e-14,             # <<<<<<<<<<<<<<
  *            max_iter: Optional[int] = 200,
  *            extend_step: int = 50,
  */
-  __pyx_t_2 = PyFloat_FromDouble(((double)1e-14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(((double)1e-14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":138
+  /* "pseudo_multinomial/series/extrapolation.pyx":128
  * # noinspection DuplicatedCode
  * @cython.binding(True)
  * def shanks(f: Callable[[int], float],             # <<<<<<<<<<<<<<
  *            start: int = 0,
  *            start_val: float = 0,
  */
-  __pyx_t_1 = PyTuple_New(8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_int_0));
   __Pyx_GIVEREF(((PyObject *)__pyx_int_0));
@@ -23028,16 +23028,16 @@ if (!__Pyx_RefNanny) {
   PyTuple_SET_ITEM(__pyx_t_1, 7, ((PyObject *)Py_False));
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Callable); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Callable); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(((PyObject *)(&PyInt_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyInt_Type)));
   PyList_SET_ITEM(__pyx_t_5, 0, ((PyObject *)(&PyInt_Type)));
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
@@ -23045,90 +23045,90 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_6, 1, ((PyObject *)(&PyFloat_Type)));
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_f, __pyx_t_5) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_f, __pyx_t_5) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_start, __pyx_n_u_int) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_start_val, __pyx_n_u_float) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_start, __pyx_n_u_int) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_start_val, __pyx_n_u_float) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":141
+  /* "pseudo_multinomial/series/extrapolation.pyx":131
  *            start: int = 0,
  *            start_val: float = 0,
  *            max_r: Optional[int] = None,             # <<<<<<<<<<<<<<
  *            atol: float = 1e-14,
  *            max_iter: Optional[int] = 200,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Optional); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Optional); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_5, ((PyObject *)(&PyInt_Type))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_5, ((PyObject *)(&PyInt_Type))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_max_r, __pyx_t_6) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_max_r, __pyx_t_6) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_atol, __pyx_n_u_float) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_atol, __pyx_n_u_float) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":143
+  /* "pseudo_multinomial/series/extrapolation.pyx":133
  *            max_r: Optional[int] = None,
  *            atol: float = 1e-14,
  *            max_iter: Optional[int] = 200,             # <<<<<<<<<<<<<<
  *            extend_step: int = 50,
  *            zero_div: str = 'ignore',
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_Optional); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_Optional); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_6, ((PyObject *)(&PyInt_Type))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_6, ((PyObject *)(&PyInt_Type))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_max_iter, __pyx_t_5) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_max_iter, __pyx_t_5) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_extend_step, __pyx_n_u_int) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_zero_div, __pyx_n_u_unicode) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_extend_step, __pyx_n_u_int) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_zero_div, __pyx_n_u_unicode) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":146
+  /* "pseudo_multinomial/series/extrapolation.pyx":136
  *            extend_step: int = 50,
  *            zero_div: str = 'ignore',
  *            return_table: bool = False):             # <<<<<<<<<<<<<<
  *     """Use Shanks transformation to find sum of series.
  * 
  */
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return_table, ((PyObject*)&PyBool_Type)) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return_table, ((PyObject*)&PyBool_Type)) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":138
+  /* "pseudo_multinomial/series/extrapolation.pyx":128
  * # noinspection DuplicatedCode
  * @cython.binding(True)
  * def shanks(f: Callable[[int], float],             # <<<<<<<<<<<<<<
  *            start: int = 0,
  *            start_val: float = 0,
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_18pseudo_multinomial_6series_13extrapolation_1shanks, 0, __pyx_n_s_shanks, NULL, __pyx_n_s_pseudo_multinomial_series_extrap_2, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_18pseudo_multinomial_6series_13extrapolation_1shanks, 0, __pyx_n_s_shanks, NULL, __pyx_n_s_pseudo_multinomial_series_extrap_2, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_t_1);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_shanks, __pyx_t_5) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_shanks, __pyx_t_5) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pseudo_multinomial/series/extrapolation.pyx":199
+  /* "pseudo_multinomial/series/extrapolation.pyx":189
  * 
  * @cython.binding(True)
  * cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],             # <<<<<<<<<<<<<<
  *                                                   r: int = None,
  *                                                   randomized: bint = False):
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_sn, __pyx_kp_u_double) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_r, __pyx_n_u_int) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_randomized, __pyx_n_u_bool) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_18pseudo_multinomial_6series_13extrapolation_3wynn_eps, 0, __pyx_n_s_wynn_eps, NULL, __pyx_n_s_pseudo_multinomial_series_extrap_2, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_sn, __pyx_kp_u_double) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_r, __pyx_n_u_int) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_randomized, __pyx_n_u_bool) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_18pseudo_multinomial_6series_13extrapolation_3wynn_eps, 0, __pyx_n_s_wynn_eps, NULL, __pyx_n_s_pseudo_multinomial_series_extrap_2, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_wynn_eps, __pyx_t_2) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_wynn_eps, __pyx_t_2) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "pseudo_multinomial/series/extrapolation.pyx":1
