@@ -260,11 +260,11 @@ chains = [
     AlgebraicChain(c=7)
 ]
 g = MasterChain.from_pvals(chains, repeat=False)
-check_chain(g, n_rolls=1000000)
+check_chain(g, n_rolls=100000)
 ```
 Output:
 ```
-[Testing] n_rolls=1000000
+[Checking] n_rolls=1000000
 MasterChain(
 	0: LinearChain(c=0.4),
 	1: HarmonicChain(c=0.3),

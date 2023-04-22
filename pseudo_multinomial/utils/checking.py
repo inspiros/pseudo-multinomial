@@ -15,7 +15,7 @@ def check_chain(chain: MasterChain, n_rolls: int = 1000):
     """
     if n_rolls < 1:
         raise ValueError(f'n_rolls must be positive. Got {n_rolls}.')
-    print(f'[Testing] n_rolls={n_rolls}')
+    print(f'[Checking] n_rolls={n_rolls}')
     print(chain)
     print('-' * 50)
     print('Chain transition matrix:')
@@ -26,7 +26,7 @@ def check_chain(chain: MasterChain, n_rolls: int = 1000):
     rolls = chain.next_states(n_rolls)
     chain.set_state(state, chain_state)
 
-    print('\nanalytical probs:', chain.probs())
+    print('analytical probs:', chain.probs())
     print('simulated probs :', np.bincount(rolls, minlength=len(chain)) / n_rolls)
 
     print('\nanalytical expectations:', chain.expectations())
