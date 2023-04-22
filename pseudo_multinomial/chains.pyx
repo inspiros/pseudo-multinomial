@@ -103,15 +103,14 @@ cdef class Chain:
         return f'{self.__class__.__name__}()'
 
 # noinspection DuplicatedCode
-cdef class _ExitProbabilityCumProd(DoubleSeriesFPtr):
+cdef class _LingerProbCumProd(DoubleSeriesFPtr):
     """
     Utility class for computing cumulative product of exit probability.
     Intended to be used as an argument of Shanks transformation.
     """
     cdef double _prod
     cdef Chain chain
-
-    def __init__(self, chain: Chain):
+    def __cinit__(self, chain: Chain):
         self._prod = 1.
         self.chain = chain
         self.reset()
@@ -143,7 +142,7 @@ cdef class FiniteChain(Chain):
             if n_states > MAX_N_FINITE_STATES:
                 warn_value(f'Number of states {int(n_states)} is too large, '
                            'using Shanks transformation to approximate.')
-                _e = shanks(_ExitProbabilityCumProd(self),
+                _e = shanks(_LingerProbCumProd(self),
                             start=self._initial_state,
                             max_r=5,
                             max_iter=MAX_APPROXIMATION_STEPS if max_iter == 0 else max_iter)
@@ -173,7 +172,7 @@ cdef class InfiniteChain(Chain):
     """Base class for infinite chains
     """
     cpdef double expectation(self, unsigned long max_iter=500):
-        cdef double _e = shanks(_ExitProbabilityCumProd(self),
+        cdef double _e = shanks(_LingerProbCumProd(self),
                                 start=self._initial_state,
                                 max_r=5,
                                 max_iter=MAX_APPROXIMATION_STEPS if max_iter == 0 else max_iter)

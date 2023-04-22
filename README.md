@@ -17,13 +17,13 @@ Therefore, we will add some background here.
 
 ### Notations
 
-|    Term    |                                        Meaning                                         |
-|:----------:|:--------------------------------------------------------------------------------------:|
-|    $S$     |                                Chain transition matrix                                 |
-|   $E_i$    |            Expectation (number of consecutive occurrences) of an event $i$             |
-|   $P_i$    |                            Nominal probability of event $i$                            |
-|   $\pi$    | Stationary distribution, $\pi^i_j$ is stationary of $j^{\text{th}}$ state of chain $i$ |
-| $\alpha_j$ |  _Lingering_ probability $\alpha_j = 1 - e_j$, where $e_j$ is the exit probability     |
+|    Term    |                                           Meaning                                           |
+|:----------:|:-------------------------------------------------------------------------------------------:|
+|    $S$     |                                   Chain transition matrix                                   |
+|   $E_i$    |               Expectation (number of consecutive occurrences) of an event $i$               |
+|   $P_i$    |                              Nominal probability of event $i$                               |
+|   $\pi$    |         Stationary distribution, $\pi^i_j$ is stationary of state $j$ of chain $i$          |
+| $\alpha_j$ | _Linger_ probability $\alpha_j = 1 - e_j$, where $e_j$ is the exit probability of state $j$ |
 
 ### Expectation
 
@@ -31,13 +31,19 @@ The expectation of an elementary chain is computed as sum of cumulative product 
 probability of changing to the next state instead of exiting the chain).
 This can be easily proved using different methods.
 
-|             |                          Finite chain                           |                            Infinite chain                            |
-|:-----------:|:---------------------------------------------------------------:|:--------------------------------------------------------------------:|
-| Expectation | $ E=1+\sum\limits_{j=1}^{n}{\prod\limits_{k=1}^{j}{\alpha_k}} $ | $ E=1+\sum\limits_{j=1}^{\infty}{\prod\limits_{k=1}^{j}{\alpha_k}} $ |
+|             |                          Finite chain                          |                           Infinite chain                            |
+|:-----------:|:--------------------------------------------------------------:|:-------------------------------------------------------------------:|
+| Expectation | $E=1+\sum\limits_{j=1}^{n}{\prod\limits_{k=1}^{j}{\alpha_k}}$  | $E=1+\sum\limits_{j=1}^{\infty}{\prod\limits_{k=1}^{j}{\alpha_k}}$  |
 
-The expectation of each chain $\bold{E}_i$ in a system multiple chains is computed as:
+The expectation of finite chains (with reasonably small number of states) can be computed easily.
+Meanwhile, for infinite chains, the sum of cumulative product of linger probabilities is a series that always converge
+if $\lim_{k\rightarrow\infty}{\alpha_k}=0$ (or $\lim_{k\rightarrow\infty}{e_k}=1$).
+It's limit can be estimated using Wynn's Epsilon method.
 
-$$ \bold{E}_i=\frac{E_i}{1-S_{ii}} $$
+Then, the expectation of each chain $\text{\bold{E}}_i$ in a system multiple chains is computed as:
+```math
+\text{\bold{E}}_i=\frac{E_i}{1-S_{ii}}
+```
 
 ### Nominal Probability
 
