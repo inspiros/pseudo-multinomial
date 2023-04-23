@@ -31,7 +31,7 @@ _Redacted_
 ### Expectation
 
 The base expectation of an elementary chain is computed as sum of cumulative product of lingering probability $a_k$ (the
-probability of changing to the next state instead of exiting the chain).
+probability of transitioning to the next state instead of exiting the chain).
 This can be easily proved using different methods.
 
 |                          |                          Finite chain                          |                           Infinite chain                            |
@@ -240,7 +240,7 @@ See more: https://dota2.fandom.com/wiki/Random_Distribution
 
 #### Example 4: Custom Chain
 
-For defining a custom chain, you can either extend the base classes (`Chain`, `FiniteChain`, `InfiniteChain`) or
+To define a custom chain, you can either extend the base classes (`Chain`, `FiniteChain`, `InfiniteChain`) or
 use the `LambdaChain`.
 
 This example defines:
