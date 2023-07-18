@@ -15,8 +15,12 @@ The code in this repo further extends the original idea to pseudo-random multino
 more behaviors.
 Therefore, we will add some background here.
 
-### Main Idea
-_Redacted_
+## Key Ideas
+
+<p align="center">
+    <img src="resources/binomial_chain.png" width="400">
+</p>
+
 
 ### Notations
 
@@ -30,8 +34,8 @@ _Redacted_
 
 ### Expectation
 
-The base expectation of an elementary chain is computed as sum of cumulative product of lingering probability $a_k$ (the
-probability of transitioning to the next state instead of exiting the chain).
+The base expectation of an elementary chain is computed as sum of cumulative product of lingering probability $\alpha_k$
+(the probability of transitioning to the next state instead of exiting the chain).
 This can be easily proved using different methods.
 
 |                          |                          Finite chain                          |                           Infinite chain                            |
