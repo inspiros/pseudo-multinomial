@@ -7,6 +7,19 @@ A package for drawing samples from pseudo-random multinomial distribution.
 
 ## Key Ideas
 
+
+### Notations
+
+|         Term          |                                                    Meaning                                                     |
+|:---------------------:|:--------------------------------------------------------------------------------------------------------------:|
+|         $N_i$         |                                         Number of states of chain $i$                                          |
+|       $\pi^i_j$       |                      Stationary of state $j$ of chain $i$, also used to denote that state                      |
+| $\alpha^i_j$, $e^i_j$ | _Linger_ probability $\alpha^i_j = 1 - e^i_j$, where $e^i_j$ is the exit probability of state $j$ of chain $i$ |
+|     $\epsilon_i$      |                           The event emitted by all states belonging to the chain $i$                           |
+|       $S_{ik}$        |                           _Chain transition probability_ from chain $i$ to chain $k$                           |
+|         $E_i$         |                     Expectation (number of consecutive occurrences) of event $\epsilon_i$                      |
+|         $P_i$         |                                   Nominal probability of event $\epsilon_i$                                    |
+
 ### Background
 
 In our unpublished work, we want to generate 0/1 bits such that 0 (failure) or 1 (success) events are promoted to occur
@@ -14,10 +27,10 @@ consecutively, forming clusters.
 Additionally, we also want to be able to set the expected number of consecutive occurrences and overall nominal
 probability at will.
 
-For this purpose, we propose a statistical method called Pseudo-random Binomial Distribution.
+For this purpose, we propose a statistical method called pseudo-random binomial distribution.
 It is based on a **Markov State Machine** consisting of a pair of sequential chains.
-Each chain $i$ has $N_i$ states (which can possibly go up to infinity), both of which emit the event
-$\epsilon_i$.
+Each chain $i \in \{1,2\}$ has $N_i$ states (which can possibly go up to infinity), and all states belonging to
+the chain $i$ emit a predefined event $\epsilon_i \in \{0,1\}$.
 At each state $\pi^i_j$, the transition probability to $\pi^i_{j+1}$ is denoted $\alpha^i_j$.
 We refer to this probability as lingering probability as it presents the likelihood of advancing to the next state $j+1$
 in that chain.
@@ -47,45 +60,37 @@ S_{21} & S_{22}
 The key idea is that we constrain the transition probabilities as follows:
 - The lingering probabilities $\alpha^i_k$ must be a monotonically decreasing series:
 ```math
-\alpha^i_j > \alpha^i_{j+1} \forall i \in \{1,2\}, j \in \{1,2,...,N_i\}
+\alpha^i_j > \alpha^i_{j+1} \quad \forall i \in \{1,2\}, j \in \{1,2,...,N_i\}
 ```
 - The lingering probability at the final state $N_i$ of the chain $i$ is always 0.
 This constraint is expressed as a limit as $N_i$ can be infinity.
 ```math
-\lim_{j \to N_i} \alpha^i_j = 0
+\lim_{j \to N_i} \alpha^i_j = 0 \quad \forall i \in \{1,2\}
 ```
 - The self-chain transition probability is zero.
 ```math
-S_{ii} = 0
+S_{ii} = 0 \quad \forall i \in \{1,2\}
 ```
 
 Informally, at the beginning of each chain $i$, the next emitted event is more likely to be $\epsilon_i$ as the
 lingering probability is higher.
-In the following states, the lingering probability decreases and approaches zero, at which the machine will switch to
-the other chain (because of the third constraint), ending the string of $\epsilon_i$ emission.
+In the subsequent timestamps, the lingering probability gradually decreases and approaches zero, at which the machine
+will certainly switch to the other chain $k \ne i$ (because of the third constraint), ending the string of $\epsilon_i$
+emission.
 
-We use parameterized functions to generate $\alpha^i_j$.
-Their parameters can be solved ensure a desired overall occurrence of an event $\epsilon_i$.
-In the following sections, we will brief the mathematical proofs and procedure to do this.
+To make the process controllable, we use parameterized functions $f_i$ to generate $\alpha^i_j = f_i(j)$.
+Their parameters can then be solved to ensure a desired overall occurrence of an event $\epsilon_i$, or the desired
+length of the string of consecutive $\epsilon_i$.
+In the following sections, we will brief the results that need to be provoked to formulate the algorithm for this.
+For the detailed proofs, please refer to the paper.
 
-This method can be easily generalized to pseudo-random multinomial distribution, and the state transition matrix $S$
-as well as the series of lingering probabilites can be chosen to exhibit different behaviors.
+This method can be easily generalized to pseudo-random multinomial distribution of $m$ events,
+Nonetheless, the state transition matrix $S$ as well as the series of lingering probabilities can be modified to exhibit
+different behaviors (see [Examples](#examples)).
 
 <p align="center">
     <img src="resources/multinomial_chain.png" width="500">
 </p>
-
-
-### Notations
-
-|     Term     |                                                    Meaning                                                     |
-|:------------:|:--------------------------------------------------------------------------------------------------------------:|
-|     $S$      |                                            Chain transition matrix                                             |
-|    $N_i$     |                                         Number of states of chain $i$                                          |
-|    $E_i$     |                          Expectation (number of consecutive occurrences) of event $i$                          |
-|    $P_i$     |                                        Nominal probability of event $i$                                        |
-|    $\pi$     |                   Stationary distribution, $\pi^i_j$ is stationary of state $j$ of chain $i$                   |
-| $\alpha^i_j$ | _Linger_ probability $\alpha^i_j = 1 - e^i_j$, where $e^i_j$ is the exit probability of state $j$ of chain $i$ |
 
 ### Expectation
 
@@ -123,7 +128,7 @@ E_1\pi^1_1 &+ E_2\pi^2_1 &+ \cdots &+ E_N\pi^N_1 &= 1 \quad\quad (\sum\limits_{i
 ```
 
 Note that the last equation contains the relationship between the expectation, entrance stationary, and probability 
-of event $i$:
+of event $\epsilon_i$:
 
 $$ P_i = E_i\pi^i_1 $$
 
