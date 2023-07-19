@@ -78,7 +78,13 @@ In the subsequent timestamps, the lingering probability gradually decreases and 
 will certainly switch to the other chain $k \ne i$ (because of the third constraint), ending the string of $\epsilon_i$
 emission.
 
-To make the process controllable, we use parameterized functions $f_i$ to generate $\alpha^i_j = f_i(j)$.
+To make the process controllable, we use parameterized functions $f^\alpha_i$ (or $f^e_i$) to generate
+$\alpha^i_j$ (or $e^i_j$, respectively):
+
+```math
+\alpha^i_j = f^\alpha_i(j)
+```
+
 Their parameters can then be solved to ensure a desired overall occurrence of an event $\epsilon_i$, or the desired
 length of the string of consecutive $\epsilon_i$.
 In the following sections, we will brief the results that need to be provoked to formulate the algorithm for this.
