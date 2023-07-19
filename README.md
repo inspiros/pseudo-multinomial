@@ -35,8 +35,8 @@ At each state $\pi^i_j$, the transition probability to $\pi^i_{j+1}$ is denoted 
 We refer to this probability as lingering probability as it presents the likelihood of advancing to the next state $j+1$
 in that chain.
 Its compensation is called exit probability $e^i_j = 1 - \alpha^i_j$.
-While exiting, the next state can only be the first state $\pi^k_1$ of the chain $k$,
-with the transition probability being $S_{ik} * e^i_j$.
+By exiting, it means that current streak of advancing in chain $i$ is terminated and the next state can be either of the
+first states $\pi^k_1$ of any chain $k \in \{0,1\}$, and the transition probability is $S_{ik} * e^i_j$.
 
 
 <p align="center">
