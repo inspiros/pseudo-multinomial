@@ -5,32 +5,87 @@ Pseudo-Random Multinomial Distribution
 
 A package for drawing samples from pseudo-random multinomial distribution.
 
-## Background
-
-This is meant to be used in our unpublished work, where we only concern about pseudo-random binomial distribution.
-In essence, we want to generate 0/1 bits such that 0 or 1 events are promoted to occur consecutively, forming clusters,
-while we can choose expected number of consecutive occurrences and overall nominal probability at will.
-
-The code in this repo further extends the original idea to pseudo-random multinomial distribution and can support even
-more behaviors.
-Therefore, we will add some background here.
-
 ## Key Ideas
 
+### Background
+
+In our unpublished work, we want to generate 0/1 bits such that 0 (failure) or 1 (success) events are promoted to occur
+consecutively, forming clusters.
+Additionally, we also want to be able to set the expected number of consecutive occurrences and overall nominal
+probability at will.
+
+For this purpose, we propose a statistical method called Pseudo-random Binomial Distribution.
+It is based on a **Markov State Machine** consisting of a pair of sequential chains.
+Each chain $i$ has $N_i$ states (which can possibly go up to infinity), both of which emit the event
+$\epsilon_i$.
+At each state $\pi^i_j$, the transition probability to $\pi^i_{j+1}$ is denoted $\alpha^i_j$.
+We refer to this probability as lingering probability as it presents the likelihood of advancing to the next state $j+1$
+in that chain.
+Its compensation is called exit probability $e^i_j = 1 - \alpha^i_j$.
+While exiting, the next state can only be the first state $\pi^k_1$ of the chain $k$,
+with the transition probability being $S_{ik} * e^i_j$.
+
+
 <p align="center">
-    <img src="resources/binomial_chain.png" width="400">
+    <img src="resources/binomial_chain.png" width="500">
+</p>
+
+The term $S_{ik}$ satisfying $\sum\limits_{k=1}^{2}{S_ik} = 1$ is called the chain transition probability in the sense
+that if each chain only has a single state, the matrix of $S_{ik}$ become the transition matrix.
+
+```math
+S = \begin{bmatrix}
+S_{11} & S_{12} \\ 
+S_{21} & S_{22}
+\end{bmatrix}
+```
+
+<p align="center">
+    <img src="resources/binomial_chain_state_graph.png" width="280">
+</p>
+
+The key idea is that we constrain the transition probabilities as follows:
+- The lingering probabilities $\alpha^i_k$ must be a monotonically decreasing series:
+```math
+\alpha^i_j > \alpha^i_{j+1} \forall i \in \{1,2\}, j \in \{1,2,...,N_i\}
+```
+- The lingering probability at the final state $N_i$ of the chain $i$ is always 0.
+This constraint is expressed as a limit as $N_i$ can be infinity.
+```math
+\lim_{j \to N_i} \alpha^i_j = 0
+```
+- The self-chain transition probability is zero.
+```math
+S_{ii} = 0
+```
+
+Informally, at the beginning of each chain $i$, the next emitted event is more likely to be $\epsilon_i$ as the
+lingering probability is higher.
+In the following states, the lingering probability decreases and approaches zero, at which the machine will switch to
+the other chain (because of the third constraint), ending the string of $\epsilon_i$ emission.
+
+We use parameterized functions to generate $\alpha^i_j$.
+Their parameters can be solved ensure a desired overall occurrence of an event $\epsilon_i$.
+In the following sections, we will brief the mathematical proofs and procedure to do this.
+
+This method can be easily generalized to pseudo-random multinomial distribution, and the state transition matrix $S$
+as well as the series of lingering probabilites can be chosen to exhibit different behaviors.
+
+<p align="center">
+    <img src="resources/multinomial_chain.png" width="500">
 </p>
 
 
 ### Notations
 
-|    Term    |                                           Meaning                                           |
-|:----------:|:-------------------------------------------------------------------------------------------:|
-|    $S$     |                                   Chain transition matrix                                   |
-|   $E_i$    |               Expectation (number of consecutive occurrences) of an event $i$               |
-|   $P_i$    |                              Nominal probability of event $i$                               |
-|   $\pi$    |         Stationary distribution, $\pi^i_j$ is stationary of state $j$ of chain $i$          |
-| $\alpha_j$ | _Linger_ probability $\alpha_j = 1 - e_j$, where $e_j$ is the exit probability of state $j$ |
+|     Term     |                                                    Meaning                                                     |
+|:------------:|:--------------------------------------------------------------------------------------------------------------:|
+|     $S$      |                                            Chain transition matrix                                             |
+|    $N_i$     |                                         Number of states of chain $i$                                          |
+|    $E_i$     |                          Expectation (number of consecutive occurrences) of event $i$                          |
+|    $P_i$     |                                        Nominal probability of event $i$                                        |
+|    $\pi$     |                   Stationary distribution, $\pi^i_j$ is stationary of state $j$ of chain $i$                   |
+| $\alpha^i_j$ | _Linger_ probability $\alpha^i_j = 1 - e^i_j$, where $e^i_j$ is the exit probability of state $j$ of chain $i$ |
 
 ### Expectation
 
