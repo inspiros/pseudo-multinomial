@@ -36,14 +36,14 @@ We refer to this probability as lingering probability as it presents the likelih
 in that chain.
 Its compensation is called exit probability $e^i_j = 1 - \alpha^i_j$.
 By exiting, it means that current streak of advancing in chain $i$ is terminated and the next state can be either of the
-first states $\pi^{i}'_1$ of any chain ${i}' \in (1,2)$, and the transition probability is $S_{i{i}'} * e^i_j$.
+first states $\pi^{{i}'}_1$ of any chain ${i}' \in (1,2)$, and the transition probability is $S_{i{i}'} * e^i_j$.
 
 
 <p align="center">
     <img src="resources/binomial_chain.png" width="500">
 </p>
 
-The term $S_{i{i}'}$ satisfying $\sum\limits_{{i}'=1}^{2}{S_i{i}'} = 1$ is called the chain transition probability
+The term $S_{i{i}'}$ satisfying $\sum\limits_{{i}'=1}^{2}{S_{i{i}'}} = 1$ is called the chain transition probability
 because if each chain only had a single state, the matrix of $S$ would become the transition matrix.
 
 ```math
