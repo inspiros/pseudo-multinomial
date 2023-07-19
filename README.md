@@ -16,7 +16,7 @@ A package for drawing samples from pseudo-random multinomial distribution.
 |       $\pi^i_j$       |                      Stationary of state $j$ of chain $i$, also used to denote that state                      |
 | $\alpha^i_j$, $e^i_j$ | _Linger_ probability $\alpha^i_j = 1 - e^i_j$, where $e^i_j$ is the exit probability of state $j$ of chain $i$ |
 |     $\epsilon_i$      |                           The event emitted by all states belonging to the chain $i$                           |
-|       $S_{ik}$        |                           _Chain transition probability_ from chain $i$ to chain $k$                           |
+|      $S_{i{i}'}$      |                        _Chain transition probability_ from chain $i$ to chain ${i}'$                           |
 |         $E_i$         |                     Expectation (number of consecutive occurrences) of event $\epsilon_i$                      |
 |         $P_i$         |                                   Nominal probability of event $\epsilon_i$                                    |
 
@@ -36,15 +36,15 @@ We refer to this probability as lingering probability as it presents the likelih
 in that chain.
 Its compensation is called exit probability $e^i_j = 1 - \alpha^i_j$.
 By exiting, it means that current streak of advancing in chain $i$ is terminated and the next state can be either of the
-first states $\pi^k_1$ of any chain $k \in \{0,1\}$, and the transition probability is $S_{ik} * e^i_j$.
+first states $\pi^{i}'_1$ of any chain ${i}' \in (1,2)$, and the transition probability is $S_{i{i}'} * e^i_j$.
 
 
 <p align="center">
     <img src="resources/binomial_chain.png" width="500">
 </p>
 
-The term $S_{ik}$ satisfying $\sum\limits_{k=1}^{2}{S_ik} = 1$ is called the chain transition probability in the sense
-that if each chain only has a single state, the matrix of $S_{ik}$ become the transition matrix.
+The term $S_{i{i}'}$ satisfying $\sum\limits_{{i}'=1}^{2}{S_i{i}'} = 1$ is called the chain transition probability
+because if each chain only had a single state, the matrix of $S$ would become the transition matrix.
 
 ```math
 S = \begin{bmatrix}
@@ -58,9 +58,9 @@ S_{21} & S_{22}
 </p>
 
 The key idea is that we constrain the transition probabilities as follows:
-- The lingering probabilities $\alpha^i_k$ must be a monotonically decreasing series:
+- The lingering probabilities $\alpha^i_j$ must be a monotonically decreasing series:
 ```math
-\alpha^i_j > \alpha^i_{j+1} \quad \forall i \in \{1,2\}, j \in \{1,2,...,N_i\}
+\alpha^i_j > \alpha^i_{j+1} \quad \forall i \in \{1,2\}, j \in \{1,2,\dots,N_i\}
 ```
 - The lingering probability at the final state $N_i$ of the chain $i$ is always 0.
 This constraint is expressed as a limit as $N_i$ can be infinity.
@@ -72,25 +72,25 @@ This constraint is expressed as a limit as $N_i$ can be infinity.
 S_{ii} = 0 \quad \forall i \in \{1,2\}
 ```
 
-Informally, at the beginning of each chain $i$, the next emitted event is more likely to be $\epsilon_i$ as the
-lingering probability is higher.
+Informally, at the beginning of each chain $i$, the next emitted event being $\epsilon_i$ reoccurring is most probable
+as the lingering probability is higher.
 In the subsequent timestamps, the lingering probability gradually decreases and approaches zero, at which the machine
-will certainly switch to the other chain $k \ne i$ (because of the third constraint), ending the string of $\epsilon_i$
-emission.
+will certainly switch to the other chain ${i}' \ne i$ (because of the third constraint), ending the string of
+$\epsilon_i$ emission.
 
-To make the process controllable, we use parameterized functions $f^\alpha_i$ (or $f^e_i$) to generate
+To make the process controllable, we use parameterized functions $f^\alpha$ (or $f^e$) to generate
 $\alpha^i_j$ (or $e^i_j$, respectively):
 
 ```math
-\alpha^i_j = f^\alpha_i(j)
+\alpha^i_j = f^\alpha(c_i, j)
 ```
 
-Their parameters can then be solved to ensure a desired overall occurrence of an event $\epsilon_i$, or the desired
+The parameter $c_i$ can then be solved to ensure a desired overall occurrence of an event $\epsilon_i$, or the desired
 length of the string of consecutive $\epsilon_i$.
 In the following sections, we will brief the results that need to be provoked to formulate the algorithm for this.
 For the detailed proofs, please refer to the paper.
 
-This method can be easily generalized to pseudo-random multinomial distribution of $m$ events,
+This method can be easily generalized to pseudo-random multinomial distribution of $m$ events.
 Nonetheless, the state transition matrix $S$ as well as the series of lingering probabilities can be modified to exhibit
 different behaviors (see [Examples](#examples)).
 
@@ -100,13 +100,13 @@ different behaviors (see [Examples](#examples)).
 
 ### Expectation
 
-The base expectation of an elementary chain is computed as sum of cumulative product of lingering probability $\alpha_k$
+The base expectation of a chain $i$ is computed as sum of cumulative product of lingering probabilities $\alpha^i_k$
 (the probability of transitioning to the next state instead of exiting the chain).
 This can be easily proved using different methods.
 
-|                          |                          Finite chain                          |                           Infinite chain                            |
-|:------------------------:|:--------------------------------------------------------------:|:-------------------------------------------------------------------:|
-| Base Expectation Formula | $E=1+\sum\limits_{j=1}^{n}{\prod\limits_{k=1}^{j}{\alpha_k}}$  | $E=1+\sum\limits_{j=1}^{\infty}{\prod\limits_{k=1}^{j}{\alpha_k}}$  |
+|                          |                            Finite chains                            |                             Infinite chains                              |
+|:------------------------:|:-------------------------------------------------------------------:|:------------------------------------------------------------------------:|
+| Base Expectation Formula | $E_i = 1+\sum\limits_{j=1}^{n}{\prod\limits_{k=1}^{j}{\alpha^i_k}}$ | $E_i = 1+\sum\limits_{j=1}^{\infty}{\prod\limits_{k=1}^{j}{\alpha^i_k}}$ |
 
 The formula of finite chains (with reasonably small number of states) can be easily computed.
 Meanwhile, for infinite chains, the sum of cumulative product of linger probabilities is a series that always converge
