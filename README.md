@@ -29,7 +29,7 @@ probability at will.
 
 For this purpose, we propose a statistical method called pseudo-random binomial distribution.
 It is based on a **Markov State Machine** consisting of a pair of sequential chains.
-Each chain $i \in \{1,2\}$ has $N_i$ states (which can possibly go up to infinity), and all states belonging to
+Each chain $i \in (1,2)$ has $N_i$ states (which can possibly go up to infinity), and all states belonging to
 the chain $i$ emit a predefined event $\epsilon_i \in \{0,1\}$.
 At each state $\pi^i_j$, the transition probability to $\pi^i_{j+1}$ is denoted $\alpha^i_j$.
 We refer to this probability as lingering probability as it presents the likelihood of advancing to the next state $j+1$
