@@ -36,7 +36,7 @@ We refer to this probability as lingering probability as it presents the likelih
 in that chain.
 Its compensation is called exit probability $e^i_j = 1 - \alpha^i_j$.
 By exiting, it means that current streak of advancing in chain $i$ is terminated and the next state can be either of the
-first states $\pi^{{i}'}_1$ of any chain ${i}' \in (1,2)$, and the transition probability is $S_{i{i}'} * e^i_j$.
+first states $\pi_1^{{i}'}$ of any chain ${i}'$, with the transition probability of $S_{i{i}'} * e^i_j$.
 
 
 <p align="center">
