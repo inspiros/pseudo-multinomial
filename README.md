@@ -378,7 +378,7 @@ import math
 
 from pseudo_multinomial import (
     PseudoMultinomialGenerator, LinearChain, GeometricChain,
-    FiniteChain, InfiniteChain  # Base class for finite chain
+    FiniteChain, InfiniteChain  # Base classes
 )
 from pseudo_multinomial.utils import validate_generator
 
