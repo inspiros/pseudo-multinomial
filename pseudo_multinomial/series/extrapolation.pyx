@@ -13,7 +13,8 @@ from cpython cimport array
 from libc cimport math
 
 from .fptr cimport DoubleSeriesFPtr, PyDoubleSeriesFPtr
-from ..utils.random_utils cimport mt19937, seed_mt19937, get_10_rand_bits
+from .._types import VectorLike
+from ..utils.random_utils cimport get_10_rand_bits
 
 __all__ = [
     'shanks',
@@ -134,7 +135,7 @@ def shanks(f: Callable[[int], float],
            extend_step: int = 50,
            zero_div: str = 'ignore',
            return_table: bool = False):
-    """Use Shanks transformation to find sum of series.
+    r"""Use Shanks transformation to find sum of series.
 
     Args:
         f: 
@@ -186,10 +187,10 @@ def shanks(f: Callable[[int], float],
     return eps[np.argmin(np.abs(diffs))]
 
 @cython.binding(True)
-cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],
+cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: VectorLike,
                                                   r: int = None,
-                                                  randomized: bint = False):
-    """Perform Wynn Epsilon Convergence Algorithm"""
+                                                  randomized: bool = False):
+    r"""Perform Wynn Epsilon Convergence Algorithm."""
     if r is None:
         r = (sn.shape[0] - 1) // 2
     else:
@@ -201,23 +202,22 @@ cpdef cnp.ndarray[cnp.float64_t, ndim=2] wynn_eps(sn: double[:],
         long i, j
         double denom
 
-    with nogil:
-        e[:, 0] = sn[:]
-        e[:, 1:] = math.NAN
-        for i in range(1, sn.shape[0]):  # i = n
-            denom = e[i, 0] - e[i - 1, 0]
-            if denom == 0:
-                break
-            e[i, 1] = 1 / denom  # first dummy column
+    e[:, 0] = sn[:]
+    e[:, 1:] = math.NAN
+    for i in range(1, sn.shape[0]):  # i = n
+        denom = e[i, 0] - e[i - 1, 0]
+        if denom == 0:
+            break
+        e[i, 1] = 1 / denom  # first dummy column
 
-            for j in range(2, min(i + 2, n)):  # j = r + 1
-                denom = e[i, j - 1] - e[i - 1, j - 1]
-                if denom == 0:
-                    if randomized:
-                        denom = (<double> get_10_rand_bits() + 1) * MACHINE_EPS
-                    else:
-                        break
-                if math.isnan(denom):
+        for j in range(2, min(i + 2, n)):  # j = r + 1
+            denom = e[i, j - 1] - e[i - 1, j - 1]
+            if denom == 0:
+                if randomized:
+                    denom = (<double> get_10_rand_bits() + 1) * MACHINE_EPS
+                else:
                     break
-                e[i, j] = e[i - 1, j - 2] + 1 / denom
+            if math.isnan(denom):
+                break
+            e[i, j] = e[i - 1, j - 2] + 1 / denom
     return np.asarray(e[:, ::2])

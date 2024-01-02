@@ -4,37 +4,40 @@
 # cython: boundscheck = False
 # cython: profile = False
 
+from typing import Sequence, Optional, Union
+
 import numpy as np
 cimport numpy as np
 from libc cimport math
 
+from ._types import VectorLike, MatrixLike
 from .chains import Chain
 from .chains cimport Chain
-from .typing import Sequence, Optional, Union, VectorLike, MatrixLike
-from .utils.random_utils cimport mt19937, seed_mt19937, uniform_real_distribution
 
 __all__ = [
-    'MasterChain',
+    'PseudoMultinomialGenerator',
     'pseudo_multinomial',
 ]
 
 # noinspection DuplicatedCode
-cdef class MasterChain:
+cdef class PseudoMultinomialGenerator:
+    r"""
+    Pseudo-Multinomial Generator class based on Markov chains.
+    """
     # cdef readonly list chains
     cdef readonly np.ndarray chains
     cdef void** _chains_ptr
     cdef readonly unsigned long n_chains
     cdef public np.ndarray S
     cdef double[:, :] _S_cumsum
-    cdef mt19937 _rng
-    cdef uniform_real_distribution[double] _dist
+    cdef public object random_state
 
     cdef public unsigned long _chain_id, _chain_state
 
     def __init__(self,
                  chains: Sequence[Chain],
                  chain_transition_matrix: MatrixLike,
-                 seed: Optional[int] = None):
+                 random_state: Optional[Union[np.random.RandomState, int]] = None):
         if not len(chains):
             raise ValueError('No chain.')
         chain_transition_matrix = np.asarray(chain_transition_matrix, dtype=np.float64)
@@ -44,27 +47,25 @@ cdef class MasterChain:
         if len(chains) != chain_transition_matrix.shape[0]:
             raise ValueError('Chain transition matrix does not '
                              'match number of chains.')
+        if not isinstance(random_state, np.random.RandomState):
+            self.random_state = np.random.RandomState(random_state)
+        else:
+            self.random_state = random_state
+
         self.chains = np.asarray(chains)
         self._chains_ptr = <void **> self.chains.data
         self.n_chains = len(self.chains)
         self.S = chain_transition_matrix
         self._S_cumsum = np.cumsum(self.S, axis=1)
 
-        self._rng = mt19937()
-        self._dist = uniform_real_distribution()
-        self.set_seed(seed)
-
         self._chain_id = 0
         self._chain_state = self.chains[self._chain_id]._initial_state
 
-    def set_seed(self, seed: Optional[int] = None) -> None:
-        if seed is None:
-            seed_mt19937(self._rng)
+    def set_random_state(self, random_state: Optional[Union[np.random.RandomState, int]] = None) -> None:
+        if not isinstance(random_state, np.random.RandomState):
+            self.random_state = np.random.RandomState(random_state)
         else:
-            seed_mt19937(self._rng, <int> seed)
-
-    cdef void set_mt19937(self, mt19937 _mt19937) nogil:
-        self._rng = _mt19937
+            self.random_state = random_state
 
     cpdef (unsigned long, unsigned long) state(self):
         return self._chain_id, self._chain_state
@@ -81,7 +82,7 @@ cdef class MasterChain:
         (<Chain> self._chains_ptr[self._chain_id]).set_state(self._chain_state)
 
     cpdef void random_init(self, long chain_id = -1, long max_chain_state = 1000):
-        """
+        r"""
         Set a random initial state based on stationary distribution.
 
         Args:
@@ -91,7 +92,7 @@ cdef class MasterChain:
              avoid indefinite loop in infinite chains. Non-positive value
              will disable this. Defaults to 1000.
         """
-        cdef double p = self._dist(self._rng)
+        cdef double p = self.random_state.rand()
         cdef np.ndarray[np.float64_t, ndim=2] es = self.entrance_stationaries()
         cdef np.ndarray[np.float64_t, ndim=1] probs = es[0] * es[1]
         cdef np.ndarray[np.float64_t, ndim=1] probs_cumsum = np.empty(self.n_chains + 1, dtype=np.float64)
@@ -110,20 +111,20 @@ cdef class MasterChain:
         cdef double stationary = 1 / es[1, chain_id]
         cdef double stationary_cumsum = stationary
         while p > stationary_cumsum:
-            stationary *= (<Chain> self._chains_ptr[chain_id]).linger_probability_(i)
+            stationary *= 1.0 - (<Chain> self._chains_ptr[chain_id]).exit_probability(i)
             stationary_cumsum += stationary
             i += 1
             if i >= max_chain_state > 0:
                 break
         self.set_state(chain_id, i)
 
-    cdef inline unsigned long next_state(self) nogil:
-        cdef double p = self._dist(self._rng)
+    cdef inline unsigned long next_state(self):
+        cdef double p = self.random_state.rand()
         self._chain_state = (<Chain> self._chains_ptr[self._chain_id]).next_state(p)
 
         cdef unsigned long i
         if not self._chain_state:  # 0 = exit
-            p = self._dist(self._rng)
+            p = self.random_state.rand()
             for i in range(self.n_chains):
                 if p < self._S_cumsum[self._chain_id, i]:
                     self._chain_id = i
@@ -133,7 +134,7 @@ cdef class MasterChain:
         return self._chain_id
 
     cpdef np.ndarray[np.int64_t, ndim=1] next_states(self, unsigned long n = 1):
-        """
+        r"""
         Generate ``n`` next states.
 
         Args:
@@ -145,9 +146,8 @@ cdef class MasterChain:
         cdef np.ndarray[np.int64_t, ndim=1] states = np.empty(n, dtype=np.int64)
         cdef np.int64_t[:] states_view = states
         cdef unsigned long i
-        with nogil:
-            for i in range(n):
-                states_view[i] = self.next_state()
+        for i in range(n):
+            states_view[i] = self.next_state()
         return states
 
     cpdef np.ndarray[np.float64_t, ndim=1] n_states(self):
@@ -244,21 +244,29 @@ cdef class MasterChain:
         repr_str += '\n)'
         return repr_str
 
-    def pseudo_multinomial(self, n: int = 1, random_init: bool = True):
-        if n < 1:
-            raise ValueError(f'n must be positive. Got {n}.')
-        if random_init:
-            self.random_init()
-        cdef np.ndarray[np.int64_t, ndim=1] rands = self.next_states(n)
-        if n == 1:
-            return rands.item()
-        return rands
+    def generate(self, size: Optional[int] = None) -> Union[int, np.ndarray]:
+        r"""
+        Draw samples.
+
+        Args:
+            size (int, optional): Output shape. Default to None, in which case a
+            single value is returned.
+
+        Returns:
+            out (int or ndarray): `size`-shaped array of random integers,
+            or a single such random int if `size` not provided.
+        """
+        if size is None:
+            return self.next_state()
+        if size < 1:
+            raise ValueError(f'size must be positive. Got {size}.')
+        return self.next_states(size)
 
     @staticmethod
     def from_pvals(chains: Sequence[Chain],
                    pvals: Optional[VectorLike] = None,
                    repeat: Union[bool, Sequence[bool], np.ndarray] = True,
-                   random_state: Optional[np.random.RandomState] = None) -> 'MasterChain':
+                   random_state: Optional[Union[np.random.RandomState, int]] = None) -> 'PseudoMultinomialGenerator':
         cdef unsigned long n_chains = len(chains)
         if pvals is None:
             pvals = np.ones(n_chains, dtype=np.float64) / n_chains
@@ -291,16 +299,36 @@ cdef class MasterChain:
             if not repeat[i]:
                 S[i, i] = 0
         S /= S.sum(1, keepdims=True)
-        return MasterChain(chains, S, random_state)
+        return PseudoMultinomialGenerator(chains, S, random_state)
 
-def pseudo_multinomial(chain: Union[MasterChain, Sequence[Chain], Chain],
-                       n: int = 1,
+def pseudo_multinomial(chain: Union[PseudoMultinomialGenerator, Sequence[Chain], Chain],
+                       size: Optional[int] = None,
                        random_init: bool = True,
-                       **kwargs):
+                       **kwargs) -> Union[int, np.ndarray]:
+    r"""
+    Draw samples from the pseudo-random multinomial distribution.
+
+    Args:
+        chain (PseudoMultinomialGenerator or sequence of Chain): An instance
+            of :class:`PseudoMultinomialGenerator`, or a sequence of
+            :class:`Chain`s for initializing one.
+        size (int, optional): Output shape. Default to None, in which case a
+            single value is returned.
+        random_init (bool): Reset the Markov chain at a random initial state.
+        **kwargs: Extra keyword arguments passed to ``from_pvals``.
+
+    Returns:
+        out (int or ndarray): `size`-shaped array of random integers,
+            or a single such random int if `size` not provided.
+    """
     if isinstance(chain, Sequence):
-        chain = MasterChain.from_pvals(chain, **kwargs)
+        chain = PseudoMultinomialGenerator.from_pvals(chain, **kwargs)
     elif isinstance(chain, Chain):
-        chain = MasterChain.from_pvals([chain])
-    else:
-        raise ValueError('chain is not a chain?!')
-    return chain.pseudo_multinomial(n, random_init)
+        chain = PseudoMultinomialGenerator.from_pvals([chain])
+    elif not isinstance(chain, PseudoMultinomialGenerator):
+        raise ValueError('chain must be a PseudoMultinomialGenerator or '
+                         f'a sequence of Chain. Got {type(chain)}.')
+
+    if random_init:
+        chain.random_init()
+    return chain.generate(size)

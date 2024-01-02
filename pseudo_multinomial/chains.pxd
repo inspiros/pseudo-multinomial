@@ -2,13 +2,12 @@ cimport numpy as np
 
 cdef class Chain:
     cdef readonly unsigned long _initial_state, _state
-    cdef void reset(self) nogil
-    cdef unsigned long state(self) nogil
-    cdef void set_state(self, unsigned long k) nogil
-    cdef unsigned long next_state(self, double p) nogil
-    cdef double exit_probability_(self, unsigned long k) nogil
+    cdef void reset(self)
+    cdef unsigned long state(self)
+    cdef void set_state(self, unsigned long k)
+    cdef unsigned long next_state(self, double p)
     cpdef double exit_probability(self, unsigned long k)
-    cdef double linger_probability_(self, unsigned long k) nogil
+    cpdef double linger_probability(self, unsigned long k)
     cpdef double expectation(self)
     cpdef double n_states(self)
     cpdef bint is_finite(self)

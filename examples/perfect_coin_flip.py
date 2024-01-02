@@ -1,11 +1,11 @@
 import numpy as np
 
-from pseudo_multinomial import MasterChain, ForwardingChain
+from pseudo_multinomial import PseudoMultinomialGenerator, ForwardingChain
 from pseudo_multinomial.utils import consecutive_bincount
 
 
 def main():
-    g = MasterChain.from_pvals(
+    g = PseudoMultinomialGenerator.from_pvals(
         chains=[ForwardingChain(),
                 ForwardingChain()],
         repeat=True)

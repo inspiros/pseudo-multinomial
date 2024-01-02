@@ -2,7 +2,7 @@ import math
 
 from pseudo_multinomial import *
 from pseudo_multinomial.chains import InfiniteChain
-from pseudo_multinomial.utils import check_chain
+from pseudo_multinomial.utils import validate_generator
 
 
 class QuadraticChain(FiniteChain):
@@ -36,14 +36,15 @@ class AlgebraicChain(InfiniteChain):
 
 
 def main():
-    g = MasterChain.from_pvals([
+    g = PseudoMultinomialGenerator.from_pvals([
         LinearChain(c=0.4),
         GeometricChain(a=1, r=.2),
+        LambdaChain(lambda k: k / math.sqrt(1 + k ** 2)),
         QuadraticChain(c=.15),
         AlgebraicChain(c=7),
     ], repeat=False)
 
-    check_chain(g, n_rolls=100000)
+    validate_generator(g, n_rolls=100000)
 
 
 if __name__ == '__main__':

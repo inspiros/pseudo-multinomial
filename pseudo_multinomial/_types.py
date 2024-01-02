@@ -1,5 +1,4 @@
-import typing
-from typing import *
+from typing import Sequence, Union
 
 import numpy as np
 
@@ -8,7 +7,6 @@ __all__ = [
     'VectorLike',
     'MatrixLike',
 ]
-__all__.extend(typing.__all__)
 
 Real = Union[int, float]
 sr1 = Sequence[Real]

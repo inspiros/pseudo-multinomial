@@ -2,15 +2,15 @@ from typing import List, Sequence, Optional, Union, Tuple
 
 import numpy as np
 
+from ._types import VectorLike, MatrixLike
 from .chains import Chain
-from .typing import *
 
 __all__ = [
-    'MasterChain',
+    'PseudoMultinomialGenerator',
 ]
 
 
-class MasterChain:
+class PseudoMultinomialGenerator:
     chains: List[Chain]
     n_chains: int
     S: np.ndarray
@@ -18,63 +18,70 @@ class MasterChain:
     def __init__(self,
                  chains: Sequence[Chain],
                  chain_transition_matrix: MatrixLike,
-                 random_state: Optional[np.random.RandomState] = None):
-        pass
+                 random_state: Optional[Union[np.random.RandomState, int]] = None):
+        ...
 
-    def set_seed(self, seed: Optional[int] = None) -> None:
-        pass
+    def set_random_state(self, random_state: Optional[Union[np.random.RandomState, int]] = None) -> None:
+        ...
 
     def state(self) -> Tuple[int, int]:
-        pass
+        ...
 
     def set_state(self, state: int, chain_state: int):
-        pass
+        ...
 
     def random_init(self, state: int = -1, max_chain_state: int = 1000):
-        pass
+        ...
 
     def next_states(self, n: int = 1) -> np.ndarray:
-        pass
+        ...
 
     def n_states(self) -> np.ndarray:
-        pass
+        ...
 
     def entrance_stationaries(self) -> np.ndarray:
-        pass
+        ...
 
     def expectations(self) -> np.ndarray:
-        pass
+        ...
 
     def probs(self) -> np.ndarray:
-        pass
+        ...
 
     def is_finite(self) -> bool:
-        pass
+        ...
 
     def chain_transition_matrix(self) -> np.ndarray:
-        pass
+        ...
 
     def transition_matrix(self, n: int = 0) -> np.ndarray:
-        pass
+        ...
 
     def __len__(self) -> int:
-        pass
+        ...
 
     def __next__(self) -> int:
-        pass
+        ...
 
     def __getitem__(self, item) -> Chain:
-        pass
+        ...
 
     def __repr__(self) -> str:
-        pass
+        ...
 
-    def pseudo_multinomial(self, n: int = 1, random_init: bool = True) -> Union[int, np.ndarray]:
-        pass
+    def generate(self, size: Optional[int] = None) -> Union[int, np.ndarray]:
+        ...
 
     @staticmethod
     def from_pvals(chains: Sequence[Chain],
                    pvals: Optional[VectorLike] = None,
                    repeat: Union[bool, Sequence[bool], np.ndarray] = True,
-                   random_state: Optional[np.random.RandomState] = None) -> 'MasterChain':
-        pass
+                   random_state: Optional[Union[np.random.RandomState, int]] = None) -> 'PseudoMultinomialGenerator':
+        ...
+
+
+def pseudo_multinomial(chain: Union[PseudoMultinomialGenerator, Sequence[Chain], Chain],
+                       size: Optional[int] = None,
+                       random_init: bool = True,
+                       **kwargs) -> Union[int, np.ndarray]:
+    ...

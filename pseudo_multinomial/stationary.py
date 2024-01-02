@@ -1,5 +1,7 @@
 import numpy as np
 
+from ._types import MatrixLike
+
 __all__ = [
     'eig',
     'brute',
@@ -55,10 +57,10 @@ ALGOS = {
 }
 
 
-def compute_stationary(P: np.ndarray,
-                       method='auto',
+def compute_stationary(P: MatrixLike,
+                       method: str = 'auto',
                        **kwargs) -> np.ndarray:
-    """
+    r"""
     Compute stationary distribution given the transition matrix.
 
     Args:

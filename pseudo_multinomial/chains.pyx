@@ -4,13 +4,15 @@
 # cython: boundscheck = False
 # cython: profile = False
 
+from typing import Callable
+
 import numpy as np
 from libc cimport math
 
+from ._types import VectorLike
 from .series.extrapolation import shanks
 from .series.fptr cimport DoubleSeriesFPtr
 from .utils._warnings import warn_value
-from .typing import Callable, VectorLike
 
 __all__ = [
     'Chain',
@@ -33,44 +35,38 @@ __all__ = [
 ################################################################################
 # noinspection DuplicatedCode
 cdef class Chain:
-    """Base Sequential Markov chain
-    """
+    r"""Base Sequential Markov chain."""
     def __init__(self, initial_state: int = 1):
         if initial_state < 1:
             raise ValueError(f'initial_state must be positive. Got {initial_state}.')
         self._initial_state = initial_state
         self._state = self._initial_state
 
-    cdef inline void reset(self) nogil:
+    cdef inline void reset(self):
         self._state = self._initial_state
 
-    cdef unsigned long state(self) nogil:
+    cdef unsigned long state(self):
         return self._state
 
-    cdef void set_state(self, unsigned long k) nogil:
+    cdef void set_state(self, unsigned long k):
         self._state = k
 
-    cdef inline unsigned long next_state(self, double p) nogil:
+    cdef inline unsigned long next_state(self, double p):
         if not self._state:
             return self._state
-        if p > self.exit_probability_(self._state):
+        if p > self.exit_probability(self._state):
             self._state += 1
         else:  # exit
             self._state = 0
         return self._state
 
-    cdef double exit_probability_(self, unsigned long k) nogil:
-        cdef double p
-        with gil:
-            p = self.exit_probability(k)
-        return p
-
     cpdef double exit_probability(self, unsigned long k):
-        """Return exit probability at state ``k``."""
+        r"""Return the exit probability at state `k`."""
         raise NotImplementedError
 
-    cdef inline double linger_probability_(self, unsigned long k) nogil:
-        return 1 - self.exit_probability_(k)
+    cpdef double linger_probability(self, unsigned long k):
+        r"""Return the lingering probability at state `k`."""
+        return 1 - self.exit_probability(k)
 
     cpdef double expectation(self):
         raise NotImplementedError
@@ -91,7 +87,7 @@ cdef class Chain:
         cdef unsigned long j
         P[0, 0] = 1  # absorbing exit state
         for j in range(1, n + 1):
-            P[j, 0] = self.exit_probability_(j + self._initial_state - 1)
+            P[j, 0] = self.exit_probability(j + self._initial_state - 1)
         for j in range(1, n):
             P[j, j + 1] = 1 - P[j, 0]
         return P
@@ -104,12 +100,13 @@ cdef class Chain:
 
 # noinspection DuplicatedCode
 cdef class _LingerProbCumProd(DoubleSeriesFPtr):
-    """
-    Utility class for computing cumulative product of exit probability.
-    Intended to be used as an argument of Shanks transformation.
+    r"""
+    Utility class for computing cumulative product of exit probability,
+    intended to be used as an argument of Shanks transformation.
     """
     cdef double _prod
     cdef Chain chain
+
     def __cinit__(self, chain: Chain):
         self._prod = 1.
         self.chain = chain
@@ -119,22 +116,22 @@ cdef class _LingerProbCumProd(DoubleSeriesFPtr):
         self._prod = 1.
 
     cdef inline double eval(self, long k):
-        cdef double linger_prob = 1 - self.chain.exit_probability_(k)
+        cdef double linger_prob = 1 - self.chain.exit_probability(k)
         if linger_prob >= 1:
             return math.INFINITY
         self._prod *= linger_prob
         return self._prod
 
-    def __call__(self, k: int) -> float:
-        return self.eval(k)
+    # TODO: Since Cython>=3.0, this method causes an error on compiled C++ code
+    # def __call__(self, k: int) -> float:
+    #     return self.eval(k)
 
 cdef unsigned long MAX_N_FINITE_STATES = 2 ** 14
 cdef unsigned long MAX_APPROXIMATION_STEPS = 2 ** 10
 
 # noinspection DuplicatedCode
 cdef class FiniteChain(Chain):
-    """Base class for finite chains
-    """
+    r"""Base class for finite chains."""
     cpdef double expectation(self, unsigned long max_iter=0):
         cdef double _e = 0., n_states = self.n_states()
         if not max_iter:
@@ -157,7 +154,7 @@ cdef class FiniteChain(Chain):
         cdef unsigned long j
         # exact computation up to max_iter
         for j in range(1, max_iter):
-            linger_prob = 1 - self.exit_probability_(j + self._initial_state - 1)
+            linger_prob = 1 - self.exit_probability(j + self._initial_state - 1)
             if linger_prob == 0:
                 break
             elif linger_prob >= 1:
@@ -169,8 +166,7 @@ cdef class FiniteChain(Chain):
 
 # noinspection DuplicatedCode
 cdef class InfiniteChain(Chain):
-    """Base class for infinite chains
-    """
+    r"""Base class for infinite chains."""
     cpdef double expectation(self, unsigned long max_iter=500):
         cdef double _e = shanks(_LingerProbCumProd(self),
                                 start=self._initial_state,
@@ -182,40 +178,32 @@ cdef class InfiniteChain(Chain):
     cpdef double n_states(self):
         return math.INFINITY
 
-cdef class _BuiltinFiniteChain(FiniteChain):
-    cpdef double exit_probability(self, unsigned long k):
-        return self.exit_probability_(k)
-
-cdef class _BuiltinInfiniteChain(InfiniteChain):
-    cpdef double exit_probability(self, unsigned long k):
-        return self.exit_probability_(k)
-
 ################################################################################
 # Finite chains
 ################################################################################
 # noinspection DuplicatedCode
-cdef class AbsorbingChain(_BuiltinFiniteChain):
-    """A chain that has single absorbing state :math:`p_{\\text{exit}}=0`.
+cdef class AbsorbingChain(FiniteChain):
+    r"""A chain that has single absorbing state :math:`p_{\\text{exit}}=0`.
     """
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         return 0
 
     cpdef double n_states(self):
         return 1
 
 # noinspection DuplicatedCode
-cdef class ForwardingChain(_BuiltinFiniteChain):
-    """A chain that has :math:`p_{\\text{exit}}=1`.
+cdef class ForwardingChain(FiniteChain):
+    r"""A chain that has :math:`p_{\\text{exit}}=1`.
     """
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         return 1
 
     cpdef double n_states(self):
         return 1
 
 # noinspection DuplicatedCode
-cdef class ListChain(_BuiltinFiniteChain):
-    """
+cdef class ListChain(FiniteChain):
+    r"""
     A finite chain with exit probabilities pre-defined and stored in a list.
 
     Args:
@@ -238,7 +226,7 @@ cdef class ListChain(_BuiltinFiniteChain):
             probs = np.append(probs, np.array([1.]))
         self.exit_probs = probs
 
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         return self.exit_probs[k - 1]
 
     cpdef double n_states(self):
@@ -248,8 +236,8 @@ cdef class ListChain(_BuiltinFiniteChain):
         return f'{self.__class__.__name__}(exit_probs={list(self.exit_probs)})'
 
 # noinspection DuplicatedCode
-cdef class LinearChain(_BuiltinFiniteChain):
-    """
+cdef class LinearChain(FiniteChain):
+    r"""
     A finite chain with exit probabilities computed from a linear function:
 
     .. math::
@@ -267,7 +255,7 @@ cdef class LinearChain(_BuiltinFiniteChain):
                              f'Got c={c}.')
         self.c = c
 
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         return math.fmin(self.c * k, 1.)
 
     cpdef double n_states(self):
@@ -280,8 +268,8 @@ cdef class LinearChain(_BuiltinFiniteChain):
 # Infinite chains
 ################################################################################
 # noinspection DuplicatedCode
-cdef class GeometricChain(_BuiltinInfiniteChain):
-    """
+cdef class GeometricChain(InfiniteChain):
+    r"""
     Infinite chain with exit probability generated by a Geometric series:
 
     .. math::
@@ -303,15 +291,15 @@ cdef class GeometricChain(_BuiltinInfiniteChain):
         self.a = a
         self.r = r
 
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         return 1 - self.a * self.r ** k
 
     def __repr__(self):
         return f'{self.__class__.__name__}(a={self.a}, r={self.r})'
 
 # noinspection DuplicatedCode
-cdef class HarmonicChain(_BuiltinInfiniteChain):
-    """
+cdef class HarmonicChain(InfiniteChain):
+    r"""
     Infinite chain with exit probability generated by a
     Harmonic-like series:
 
@@ -336,7 +324,7 @@ cdef class HarmonicChain(_BuiltinInfiniteChain):
                              f'Got c={c}.')
         self.c = c
 
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         cdef double x = self.c * k
         return x / (x + 1)
 
@@ -344,47 +332,48 @@ cdef class HarmonicChain(_BuiltinInfiniteChain):
         return f'{self.__class__.__name__}(c={self.c})'
 
 # noinspection DuplicatedCode
-cdef class TanhChain(_BuiltinInfiniteChain):
+cdef class TanhChain(InfiniteChain):
     cdef public double c
     def __init__(self, c: float, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.c = c
 
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         return math.tanh(self.c * k)
 
     def __repr__(self):
         return f'{self.__class__.__name__}(c={self.c})'
 
 # noinspection DuplicatedCode
-cdef class SigmoidChain(_BuiltinInfiniteChain):
+cdef class SigmoidChain(InfiniteChain):
     cdef public double c
     def __init__(self, c: float, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.c = c
 
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         return 2 / (1 + math.exp(-self.c * k)) - 1
 
     def __repr__(self):
         return f'{self.__class__.__name__}(c={self.c})'
 
 # noinspection DuplicatedCode
-cdef class ATanChain(_BuiltinInfiniteChain):
+cdef class ATanChain(InfiniteChain):
     cdef public double c
+
     def __init__(self, c: float, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.c = c
 
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         return 2 / math.pi * math.atan(self.c * k)
 
     def __repr__(self):
         return f'{self.__class__.__name__}(c={self.c})'
 
 # noinspection DuplicatedCode
-cdef class LambdaChain(_BuiltinInfiniteChain):
-    """
+cdef class LambdaChain(InfiniteChain):
+    r"""
     Infinite chain with exit probability generated by a custom lambda
     function.
 
@@ -393,12 +382,12 @@ cdef class LambdaChain(_BuiltinInfiniteChain):
          the corresponding exit probability.
     """
     cdef public object f
+
     def __init__(self, f: Callable[[int], float], *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.f = f
 
-    cdef inline double exit_probability_(self, unsigned long k) nogil:
+    cpdef double exit_probability(self, unsigned long k):
         cdef double p
-        with gil:
-            p = self.f(k)
+        p = self.f(k)
         return p
